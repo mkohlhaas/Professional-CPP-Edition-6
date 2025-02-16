@@ -1,6 +1,6 @@
 #include "AirlineTicket.h"
 
-using namespace std;
+// using namespace std;
 
 // AirlineTicket::AirlineTicket()
 //	: m_passengerName{ "Unknown Passenger" }

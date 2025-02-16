@@ -2,6 +2,8 @@
 
 #include <string>
 
+using std::string;
+
 class AirlineTicket
 {
 public:
@@ -10,8 +12,8 @@ public:
 
   double calculatePriceInDollars ();
 
-  std::string getPassengerName ();
-  void        setPassengerName (std::string name);
+  string getPassengerName ();
+  void   setPassengerName (string name);
 
   int  getNumberOfMiles ();
   void setNumberOfMiles (int miles);
@@ -20,10 +22,11 @@ public:
   void setHasEliteSuperRewardsStatus (bool status);
 
 private:
-  // std::string m_passengerName;
+  // string m_passengerName;
   // int m_numberOfMiles;
   // bool m_hasEliteSuperRewardsStatus;
-  std::string m_passengerName{ "Unknown Passenger" };
-  int         m_numberOfMiles{ 0 };
-  bool        m_hasEliteSuperRewardsStatus{ false };
+
+  string m_passengerName{ "Unknown Passenger" };
+  int    m_numberOfMiles{ 0 };
+  bool   m_hasEliteSuperRewardsStatus{ false };
 };
