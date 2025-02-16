@@ -1,4 +1,5 @@
-[[nodiscard]] int
+[[nodiscard]]
+int
 func ()
 {
   return 42;

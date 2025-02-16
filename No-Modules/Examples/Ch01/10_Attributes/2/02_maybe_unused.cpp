@@ -1,3 +1,5 @@
+#include <print>
+
 int
 func (int param1, [[maybe_unused]] int param2)
 {
@@ -8,4 +10,5 @@ int
 main ()
 {
   int result{ func (1, 2) };
+  std::println ("result: {}", result);
 }

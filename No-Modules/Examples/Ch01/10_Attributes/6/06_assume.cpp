@@ -12,5 +12,5 @@ divideBy32 (int x)
 int
 main ()
 {
-  println ("Result: {}", divideBy32 (64));
+  println ("result: {}", divideBy32 (64));
 }

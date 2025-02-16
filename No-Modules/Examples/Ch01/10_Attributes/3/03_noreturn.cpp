@@ -1,18 +1,23 @@
+#include <cstdlib>
 #include <print>
 
 using namespace std;
 
-[[noreturn]] void
+[[noreturn]]
+void
 forceProgramTermination ()
 {
-  exit (1); // Defined in <cstdlib>
+  println ("exiting...");
+  exit (EXIT_FAILURE);
 }
 
 bool
 isDongleAvailable ()
 {
-  bool isAvailable{ false };
-  // Check whether a licensing dongle is available...
+  // bool isAvailable{ false };
+  bool isAvailable{ true };
+  // Check whether a licensing dongle is available
+  // ...
   return isAvailable;
 }
 
@@ -36,5 +41,5 @@ int
 main ()
 {
   bool isLicensed{ isFeatureLicensed (42) };
-  println ("{}", isLicensed);
+  println ("is licensed: {}", isLicensed);
 }

@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// declaration
 void myFunction (int i, char c);
 
 void
@@ -41,6 +42,7 @@ main ()
   myFunction (5, someChar);
 
   int sum{ addNumbers (5, 3) };
+  println ("sum: {}", sum);
 
   println ("{}", addNumbers (1, 2));       // Calls the integer version
   println ("{}", addNumbers (1.11, 2.22)); // Calls the double version
