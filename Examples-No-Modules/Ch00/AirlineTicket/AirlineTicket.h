@@ -24,6 +24,6 @@ private:
   // int m_numberOfMiles;
   // bool m_hasEliteSuperRewardsStatus;
   std::string m_passengerName{ "Unknown Passenger" };
-  int m_numberOfMiles{ 0 };
-  bool m_hasEliteSuperRewardsStatus{ false };
+  int         m_numberOfMiles{ 0 };
+  bool        m_hasEliteSuperRewardsStatus{ false };
 };
