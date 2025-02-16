@@ -7,4 +7,4 @@ AlignConsecutiveMacros:       Consecutive
 InsertBraces:                 true
 AlignTrailingComments:
   Kind:           Always
-  OverEmptyLines: 2
+  OverEmptyLines: 3

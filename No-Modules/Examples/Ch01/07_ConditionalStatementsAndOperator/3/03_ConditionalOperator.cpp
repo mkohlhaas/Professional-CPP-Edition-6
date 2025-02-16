@@ -1,6 +1,6 @@
 #include <print>
 
-using namespace std;
+using std::println;
 
 int
 main ()

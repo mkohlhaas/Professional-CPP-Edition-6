@@ -1,3 +1,4 @@
+#include <print>
 #include <utility>
 
 using namespace std;
@@ -17,16 +18,19 @@ main ()
     PieceType piece{ PieceType::King };
 
     auto underlyingValue{ to_underlying (piece) };
-  }
-
-  {
-    using enum PieceType;
-    PieceType piece{ King };
+    println ("{}", underlyingValue);
   }
 
   {
     using PieceType::King;
     PieceType piece{ King };
     piece = PieceType::Queen;
+    println ("{}", sizeof (piece));
+  }
+
+  {
+    using enum PieceType;
+    PieceType piece{ King };
+    println ("{}", sizeof (piece));
   }
 }

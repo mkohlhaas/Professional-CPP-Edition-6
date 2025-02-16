@@ -2,6 +2,17 @@
 
 using std::println;
 
+namespace mycode::nssub1::nssub2
+{
+void
+foo ()
+{
+  println ("foo() called in the mycode::nssub1::nssub2 namespace.");
+}
+}
+
+namespace subns = mycode::nssub1::nssub2;
+
 namespace mycode
 {
 void
@@ -13,9 +24,13 @@ foo ()
 
 using namespace mycode;
 
+// using namespace subns;
+
 int
 main ()
 {
-  mycode::foo (); // Calls the "foo" function in the "mycode" namespace
-  foo ();         // implies mycode::foo();
+  mycode::foo ();
+  foo ();
+  mycode::nssub1::nssub2::foo ();
+  subns::foo ();
 }

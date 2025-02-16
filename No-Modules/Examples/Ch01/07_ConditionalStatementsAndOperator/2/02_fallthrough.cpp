@@ -1,3 +1,7 @@
+#include <print>
+
+using std::println;
+
 int
 main ()
 {
@@ -9,7 +13,7 @@ main ()
   };
 
   int  value{ 42 };
-  Mode mode{ Mode::Custom };
+  Mode mode{ Mode::Standard };
 
   switch (mode)
     {
@@ -20,7 +24,9 @@ main ()
       [[fallthrough]];
     case Standard:
     case Default:
-      // Do something with value ...
+      value = 21;
+      println ("value: {}", value);
       break;
     }
+  println ("value: {}", value);
 }

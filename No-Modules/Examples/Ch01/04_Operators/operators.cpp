@@ -13,14 +13,20 @@ main ()
 
   someInteger++;
   someInteger *= 2;
+
   // Conversion from larger integer type to smaller integer type
   // can cause a warning or error, hence static_cast() is required.
   someShort = static_cast<short> (someInteger);
-  someLong  = someShort * 10000;
+  someLong  = someShort * 1000;
   someFloat = someLong + 0.785f;
+
   // To make sure the division is performed with double precision,
   // someFloat is explicitly converted to double first.
   someDouble = static_cast<double> (someFloat) / 100000;
 
-  println ("{}", someDouble);
+  println ("int:\t{}", someInteger);
+  println ("short:\t{}", someShort);
+  println ("long:\t{}", someLong);
+  println ("float:\t{}", someFloat);
+  println ("double:\t{}", someDouble);
 }
