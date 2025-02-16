@@ -11,7 +11,9 @@ main ()
   println ("Min int value: {}", numeric_limits<int>::min ());
   println ("Lowest int value: {}", numeric_limits<int>::lowest ());
 
-  println ("\ndouble:");
+  println ();
+
+  println ("double:");
   println ("Max double value: {}", numeric_limits<double>::max ());
   println ("Min double value: {}", numeric_limits<double>::min ());
   println ("Lowest double value: {}", numeric_limits<double>::lowest ());

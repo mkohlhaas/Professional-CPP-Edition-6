@@ -1,11 +1,13 @@
 #include <print>
 
+using std::println;
+
 namespace mycode
 {
 void
 foo ()
 {
-  std::println ("foo() called in the mycode namespace");
+  println ("foo() called in the mycode namespace.");
 }
 }
 
