@@ -1,8 +1,9 @@
 import simple;
 import derived_simple;
 
-int main()
+int
+main ()
 {
-	Simple mySimple;
-	DerivedSimple derived;
+  Simple        mySimple;
+  DerivedSimple derived;
 }

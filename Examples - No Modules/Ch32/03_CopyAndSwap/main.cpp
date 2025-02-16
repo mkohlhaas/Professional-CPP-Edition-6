@@ -1,8 +1,9 @@
 #include "CopyAndSwap.h"
 
-int main()
+int
+main ()
 {
-	CopyAndSwap myFirstInstance;
-	CopyAndSwap mySecondInstance;
-	mySecondInstance = myFirstInstance;
+  CopyAndSwap myFirstInstance;
+  CopyAndSwap mySecondInstance;
+  mySecondInstance = myFirstInstance;
 }

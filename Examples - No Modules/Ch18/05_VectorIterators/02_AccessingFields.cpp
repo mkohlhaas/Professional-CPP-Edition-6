@@ -1,19 +1,21 @@
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	vector<string> stringVector(10, "hello");
+  vector<string> stringVector (10, "hello");
 
-	for (auto it{ begin(stringVector) }; it != end(stringVector); ++it) {
-		it->append(" there");
-	}
-/*
-	// Using Range-Based for loop
-	for (auto& str : stringVector) {
-		str.append(" there");
-	}
-*/
+  for (auto it{ begin (stringVector) }; it != end (stringVector); ++it)
+    {
+      it->append (" there");
+    }
+  /*
+          // Using Range-Based for loop
+          for (auto& str : stringVector) {
+                  str.append(" there");
+          }
+  */
 }

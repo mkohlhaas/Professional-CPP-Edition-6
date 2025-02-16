@@ -1,11 +1,12 @@
-#include <print>
 #include <algorithm>
+#include <print>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	println("{}", clamp(-3, 1, 10));
-	println("{}", clamp(3, 1, 10));
-	println("{}", clamp(22, 1, 10));
+  println ("{}", clamp (-3, 1, 10));
+  println ("{}", clamp (3, 1, 10));
+  println ("{}", clamp (22, 1, 10));
 }

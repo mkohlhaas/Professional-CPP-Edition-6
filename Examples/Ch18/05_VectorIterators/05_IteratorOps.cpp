@@ -2,12 +2,13 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	vector<int> intVector(10);
+  vector<int> intVector (10);
 
-	auto it{ begin(intVector) };
-	it += 5;
-	--it;
-	*it = 4;
+  auto it{ begin (intVector) };
+  it += 5;
+  --it;
+  *it = 4;
 }

@@ -4,28 +4,29 @@ using namespace std;
 
 enum class PieceType
 {
-	King = 1,
-	Queen,
-	Rook = 10,
-	Pawn
+  King = 1,
+  Queen,
+  Rook = 10,
+  Pawn
 };
 
-int main()
+int
+main ()
 {
-	{
-		PieceType piece{ PieceType::King };
+  {
+    PieceType piece{ PieceType::King };
 
-		auto underlyingValue{ to_underlying(piece) };
-	}
+    auto underlyingValue{ to_underlying (piece) };
+  }
 
-	{
-		using enum PieceType;
-		PieceType piece{ King };
-	}
+  {
+    using enum PieceType;
+    PieceType piece{ King };
+  }
 
-	{
-		using PieceType::King;
-		PieceType piece{ King };
-		piece = PieceType::Queen;
-	}
+  {
+    using PieceType::King;
+    PieceType piece{ King };
+    piece = PieceType::Queen;
+  }
 }

@@ -1,10 +1,11 @@
 import std;
 
-int main()
+int
+main ()
 {
-	int value;
-	std::cin >> value;
-	std::println("You entered {}", value);
+  int value;
+  std::cin >> value;
+  std::println ("You entered {}", value);
 
-	return 0;
+  return 0;
 }

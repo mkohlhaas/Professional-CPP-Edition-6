@@ -3,10 +3,11 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Person person{ "John", "Doe" };
+  Person person{ "John", "Doe" };
 
-	string str{ person };
-	println("{}", str);
+  string str{ person };
+  println ("{}", str);
 }

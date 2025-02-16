@@ -1,6 +1,7 @@
-void f();
+void f ();
 
-int main()
+int
+main ()
 {
-	f();
+  f ();
 }

@@ -1,12 +1,13 @@
 #include "SpreadsheetCell.h"
 
-int main()
+int
+main ()
 {
-	SpreadsheetCell myCell, anotherCell, aThirdCell;
+  SpreadsheetCell myCell, anotherCell, aThirdCell;
 
-	myCell = anotherCell = aThirdCell;
-	myCell.operator=(anotherCell.operator=(aThirdCell));
+  myCell = anotherCell = aThirdCell;
+  myCell.operator= (anotherCell.operator= (aThirdCell));
 
-	SpreadsheetCell cell{ 4 };
-	cell = cell; // self-assignment
+  SpreadsheetCell cell{ 4 };
+  cell = cell; // self-assignment
 }

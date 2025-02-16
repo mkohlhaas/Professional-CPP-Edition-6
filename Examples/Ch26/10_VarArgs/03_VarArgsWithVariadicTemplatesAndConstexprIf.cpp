@@ -2,20 +2,35 @@ import std;
 
 using namespace std;
 
-void handleValue(int value) { println("Integer: {}", value); }
-void handleValue(double value) { println("Double: {}", value); }
-void handleValue(const string& value) { println("String: {}", value); }
-
-template<typename T1, typename... Tn>
-void processValues(T1&& arg1, Tn&&... args)
+void
+handleValue (int value)
 {
-	handleValue(forward<T1>(arg1));
-	if constexpr (sizeof...(args) > 0) {
-		processValues(forward<Tn>(args)...);
-	}
+  println ("Integer: {}", value);
+}
+void
+handleValue (double value)
+{
+  println ("Double: {}", value);
+}
+void
+handleValue (const string &value)
+{
+  println ("String: {}", value);
 }
 
-int main()
+template <typename T1, typename... Tn>
+void
+processValues (T1 &&arg1, Tn &&...args)
 {
-	processValues(1, 2, 3.56, "test", 1.1f);
+  handleValue (forward<T1> (arg1));
+  if constexpr (sizeof...(args) > 0)
+    {
+      processValues (forward<Tn> (args)...);
+    }
+}
+
+int
+main ()
+{
+  processValues (1, 2, 3.56, "test", 1.1f);
 }

@@ -3,11 +3,12 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	auto peter{ "Peter Van Weert"_p };
+  auto peter{ "Peter Van Weert" _p };
 
-	println("First name: '{}'", peter.getFirstName());
-	println("Last name: '{}'", peter.getLastName());
-	println("Initials: '{}'", peter.getInitials());
+  println ("First name: '{}'", peter.getFirstName ());
+  println ("Last name: '{}'", peter.getLastName ());
+  println ("Initials: '{}'", peter.getInitials ());
 }

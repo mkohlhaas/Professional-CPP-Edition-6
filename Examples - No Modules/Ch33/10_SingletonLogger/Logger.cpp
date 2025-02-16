@@ -1,58 +1,65 @@
 #include "Logger.h"
-#include <print>
-#include <stdexcept>
 #include <chrono>
 #include <ostream>
+#include <print>
+#include <stdexcept>
 #include <utility>
 
 using namespace std;
 
-void Logger::setLogFilename(string logFilename)
+void
+Logger::setLogFilename (string logFilename)
 {
-	ms_logFilename = move(logFilename);
+  ms_logFilename = move (logFilename);
 }
 
-Logger& Logger::instance()
+Logger &
+Logger::instance ()
 {
-	static Logger instance; // Thread-safe static local variable.
-	return instance;
+  static Logger instance; // Thread-safe static local variable.
+  return instance;
 }
 
-Logger::Logger()
+Logger::Logger ()
 {
-	m_outputStream.open(ms_logFilename, ios_base::app);
-	if (!m_outputStream.good()) {
-		throw runtime_error{ "Unable to initialize the Logger!" };
-	}
-	println(m_outputStream, "{}: Logger started.", chrono::system_clock::now());
+  m_outputStream.open (ms_logFilename, ios_base::app);
+  if (!m_outputStream.good ())
+    {
+      throw runtime_error{ "Unable to initialize the Logger!" };
+    }
+  println (m_outputStream, "{}: Logger started.", chrono::system_clock::now ());
 }
 
-Logger::~Logger()
+Logger::~Logger () { println (m_outputStream, "{}: Logger stopped.", chrono::system_clock::now ()); }
+
+void
+Logger::setLogLevel (LogLevel level)
 {
-	println(m_outputStream, "{}: Logger stopped.", chrono::system_clock::now());
+  m_logLevel = level;
 }
 
-void Logger::setLogLevel(LogLevel level)
+string_view
+Logger::getLogLevelString (LogLevel level) const
 {
-	m_logLevel = level;
+  switch (level)
+    {
+    case LogLevel::Debug:
+      return "DEBUG";
+    case LogLevel::Info:
+      return "INFO";
+    case LogLevel::Error:
+      return "ERROR";
+    }
+  throw runtime_error{ "Invalid log level." };
 }
 
-string_view Logger::getLogLevelString(LogLevel level) const
+void
+Logger::log (string_view message, LogLevel logLevel)
 {
-	switch (level) {
-	case LogLevel::Debug: return "DEBUG";
-	case LogLevel::Info: return "INFO";
-	case LogLevel::Error: return "ERROR";
-	}
-	throw runtime_error{ "Invalid log level." };
-}
+  if (m_logLevel > logLevel)
+    {
+      return;
+    }
 
-void Logger::log(string_view message, LogLevel logLevel)
-{
-	if (m_logLevel > logLevel) {
-		return;
-	}
-
-	println(m_outputStream, "{}: [{}] {}", chrono::system_clock::now(),
-		getLogLevelString(logLevel), message);
+  println (m_outputStream, "{}: [{}] {}", chrono::system_clock::now (), getLogLevelString (logLevel), message);
 }

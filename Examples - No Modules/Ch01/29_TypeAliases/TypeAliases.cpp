@@ -1,21 +1,23 @@
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-//void processVector(const vector<basic_string<char>>& vec)
+// void processVector(const vector<basic_string<char>>& vec)
 //{
 //	// Body omitted
-//}
+// }
 
-void processVector(const vector<string>& vec)
+void
+processVector (const vector<string> &vec)
 {
-	// Body omitted
+  // Body omitted
 }
 
-int main()
+int
+main ()
 {
-	//vector<basic_string<char>> myVector;
-	vector<string> myVector;
-	processVector(myVector);
+  // vector<basic_string<char>> myVector;
+  vector<string> myVector;
+  processVector (myVector);
 }

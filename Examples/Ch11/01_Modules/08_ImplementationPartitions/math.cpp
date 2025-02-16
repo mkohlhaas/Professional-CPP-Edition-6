@@ -2,14 +2,16 @@ module math;
 
 import :details;
 
-double Math::superLog(double z, double b)
+double
+Math::superLog (double z, double b)
 {
-	// Implementation omitted...
-	return someHelperFunction(z);
+  // Implementation omitted...
+  return someHelperFunction (z);
 }
 
-double Math::lerchZeta(double lambda, double alpha, double s)
+double
+Math::lerchZeta (double lambda, double alpha, double s)
 {
-	// Implementation omitted...
-	return someHelperFunction(s);
+  // Implementation omitted...
+  return someHelperFunction (s);
 }

@@ -1,13 +1,14 @@
-#include <print>
 #include <atomic>
+#include <print>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	atomic<int> value{ 10 };
-	println("Value = {}", value.load());
-	int fetched{ value.fetch_add(4) };
-	println("Fetched = {}", fetched);
-	println("Value = {}", value.load());
+  atomic<int> value{ 10 };
+  println ("Value = {}", value.load ());
+  int fetched{ value.fetch_add (4) };
+  println ("Fetched = {}", fetched);
+  println ("Value = {}", value.load ());
 }

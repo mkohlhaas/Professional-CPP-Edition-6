@@ -4,13 +4,15 @@
 using namespace std;
 
 // rvalue reference parameter
-void handleMessage(string&& message)
+void
+handleMessage (string &&message)
 {
-	println("handleMessage with rvalue reference: {}", message);
+  println ("handleMessage with rvalue reference: {}", message);
 }
 
-int main()
+int
+main ()
 {
-	string value{ "Hello " };
-	handleMessage(auto{ value });
+  string value{ "Hello " };
+  handleMessage (auto{ value });
 }

@@ -1,8 +1,9 @@
 import copy_and_swap;
 
-int main()
+int
+main ()
 {
-	CopyAndSwap myFirstInstance;
-	CopyAndSwap mySecondInstance;
-	mySecondInstance = myFirstInstance;
+  CopyAndSwap myFirstInstance;
+  CopyAndSwap mySecondInstance;
+  mySecondInstance = myFirstInstance;
 }

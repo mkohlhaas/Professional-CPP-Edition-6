@@ -1,22 +1,25 @@
 import std;
 
-class MyClass {};
-
-int main()
+class MyClass
 {
-	// Create an allocator to use.
-	std::allocator<MyClass> alloc;
+};
 
-	// Allocate an uninitialized memory block for 1 instance of MyClass.
-	auto* memory{ alloc.allocate(1) };
+int
+main ()
+{
+  // Create an allocator to use.
+  std::allocator<MyClass> alloc;
 
-	// Use placement new operator to construct a MyClass in place.
-	::new(memory) MyClass{};
+  // Allocate an uninitialized memory block for 1 instance of MyClass.
+  auto *memory{ alloc.allocate (1) };
 
-	// Destroy MyClass instance.
-	std::destroy_at(memory);
+  // Use placement new operator to construct a MyClass in place.
+  ::new (memory) MyClass{};
 
-	// Deallocate memory block.
-	alloc.deallocate(memory, 1);
-	memory = nullptr;
+  // Destroy MyClass instance.
+  std::destroy_at (memory);
+
+  // Deallocate memory block.
+  alloc.deallocate (memory, 1);
+  memory = nullptr;
 }

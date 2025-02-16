@@ -1,9 +1,13 @@
 #include <cstddef>
 
-void func(int i) { /* ... */ }
+void
+func (int i)
+{ /* ... */
+}
 
-int main()
+int
+main ()
 {
-	func(NULL);
-	//func(nullptr); // Compilation error.
+  func (NULL);
+  // func(nullptr); // Compilation error.
 }

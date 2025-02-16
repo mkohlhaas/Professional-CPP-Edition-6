@@ -2,8 +2,9 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	const char* test{ "hello there" };
-	cout.write(test, strlen(test));
+  const char *test{ "hello there" };
+  cout.write (test, strlen (test));
 }

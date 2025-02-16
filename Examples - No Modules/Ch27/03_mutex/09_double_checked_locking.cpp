@@ -1,40 +1,46 @@
-#include <print>
+#include <atomic>
 #include <mutex>
+#include <print>
 #include <thread>
 #include <vector>
-#include <atomic>
 
 using namespace std;
 
-void initializeSharedResources()
+void
+initializeSharedResources ()
 {
-	// ... Initialize shared resources to be used by multiple threads.
+  // ... Initialize shared resources to be used by multiple threads.
 
-	println("Shared resources initialized.");
+  println ("Shared resources initialized.");
 }
 
 atomic<bool> g_initialized{ false };
-mutex g_mutex;
+mutex        g_mutex;
 
-void processingFunction()
+void
+processingFunction ()
 {
-	if (!g_initialized) {
-		unique_lock lock{ g_mutex };
-		if (!g_initialized) {
-			initializeSharedResources();
-			g_initialized = true;
-		}
-	}
-	print("1");
+  if (!g_initialized)
+    {
+      unique_lock lock{ g_mutex };
+      if (!g_initialized)
+        {
+          initializeSharedResources ();
+          g_initialized = true;
+        }
+    }
+  print ("1");
 }
 
-int main()
+int
+main ()
 {
-	vector<jthread> threads;
+  vector<jthread> threads;
 
-	for (int i{ 0 }; i < 5; ++i) {
-		threads.emplace_back(processingFunction);
-	}
+  for (int i{ 0 }; i < 5; ++i)
+    {
+      threads.emplace_back (processingFunction);
+    }
 
-	// No need to manually call join(), as we are using jthread.
+  // No need to manually call join(), as we are using jthread.
 }

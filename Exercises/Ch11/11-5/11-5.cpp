@@ -3,14 +3,14 @@
 
 // Check the value of MY_ID.
 #if MY_ID == 0
-	// Ignore ...
+// Ignore ...
 #elif MY_ID == 1
-	#warning "MY_ID == 1"
+#warning "MY_ID == 1"
 #else
-	#error "MY_ID should be either 0 or 1"
+#error "MY_ID should be either 0 or 1"
 #endif
 
-
-int main()
+int
+main ()
 {
 }

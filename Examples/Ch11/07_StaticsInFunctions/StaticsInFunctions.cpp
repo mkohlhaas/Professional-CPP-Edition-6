@@ -2,21 +2,24 @@ import std;
 
 using namespace std;
 
-void performTask()
+void
+performTask ()
 {
-	static bool initialized{ false };
+  static bool initialized{ false };
 
-	if (!initialized) {
-		println("initializing");
-		// Perform initialization.
-		initialized = true;
-	}
+  if (!initialized)
+    {
+      println ("initializing");
+      // Perform initialization.
+      initialized = true;
+    }
 
-	// Perform the desired task.
+  // Perform the desired task.
 }
 
-int main()
+int
+main ()
 {
-	performTask();
-	performTask();
+  performTask ();
+  performTask ();
 }

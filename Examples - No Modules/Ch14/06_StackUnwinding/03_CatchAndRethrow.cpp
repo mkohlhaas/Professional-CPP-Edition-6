@@ -1,41 +1,50 @@
-#include <print>
-#include <fstream>
-#include <string>
 #include <exception>
+#include <fstream>
 #include <iostream>
+#include <print>
+#include <string>
 
 using namespace std;
 
-void funcOne();
-void funcTwo();
+void funcOne ();
+void funcTwo ();
 
-int main()
+int
+main ()
 {
-	try {
-		funcOne();
-	} catch (const exception& /* e */) {
-		println(cerr, "Exception caught!");
-		return 1;
-	}
+  try
+    {
+      funcOne ();
+    }
+  catch (const exception & /* e */)
+    {
+      println (cerr, "Exception caught!");
+      return 1;
+    }
 }
 
-void funcOne()
+void
+funcOne ()
 {
-	string str1;
-	string* str2{ new string{} };
-	try {
-		funcTwo();
-	} catch (...) {
-		delete str2;
-		throw; // Rethrow the exception.
-	}
-	delete str2;
+  string  str1;
+  string *str2{ new string{} };
+  try
+    {
+      funcTwo ();
+    }
+  catch (...)
+    {
+      delete str2;
+      throw; // Rethrow the exception.
+    }
+  delete str2;
 }
 
-void funcTwo()
+void
+funcTwo ()
 {
-	ifstream fileStream;
-	fileStream.open("filename");
-	throw exception {};
-	fileStream.close();
+  ifstream fileStream;
+  fileStream.open ("filename");
+  throw exception{};
+  fileStream.close ();
 }

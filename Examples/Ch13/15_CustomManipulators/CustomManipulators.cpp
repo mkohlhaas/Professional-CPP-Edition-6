@@ -3,12 +3,14 @@ import std;
 using namespace std;
 
 // Custom tab manipulator.
-ostream& tab(ostream& stream)
+ostream &
+tab (ostream &stream)
 {
-	return stream << '\t';
+  return stream << '\t';
 }
 
-int main()
+int
+main ()
 {
-	cout << "Test" << tab << "!" << endl;
+  cout << "Test" << tab << "!" << endl;
 }

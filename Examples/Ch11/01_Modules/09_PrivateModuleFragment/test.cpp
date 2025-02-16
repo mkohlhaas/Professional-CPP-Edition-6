@@ -3,10 +3,11 @@ import adder;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Adder adder;
-	println("Value: {}", adder.add(20, 22));
-	auto impl{ adder.getImplementation() };
-	//auto result{ impl->add(20, 22) }; // Error!
+  Adder adder;
+  println ("Value: {}", adder.add (20, 22));
+  auto impl{ adder.getImplementation () };
+  // auto result{ impl->add(20, 22) }; // Error!
 }

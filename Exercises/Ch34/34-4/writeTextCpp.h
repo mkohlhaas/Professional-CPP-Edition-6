@@ -1,8 +1,9 @@
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-	void writeTextFromCpp(const char* text);
+  void writeTextFromCpp (const char *text);
 
 #ifdef __cplusplus
 } // matches extern "C"

@@ -5,14 +5,15 @@ using namespace std;
 class Foo
 {
 public:
-	Foo(unique_ptr<int> data) : m_data{ move(data) } { }
+  Foo (unique_ptr<int> data) : m_data{ move (data) } {}
 
 private:
-	unique_ptr<int> m_data;
+  unique_ptr<int> m_data;
 };
 
-int main()
+int
+main ()
 {
-	auto myIntSmartPtr{ make_unique<int>(42) };
-	Foo f{ move(myIntSmartPtr) };
+  auto myIntSmartPtr{ make_unique<int> (42) };
+  Foo  f{ move (myIntSmartPtr) };
 }

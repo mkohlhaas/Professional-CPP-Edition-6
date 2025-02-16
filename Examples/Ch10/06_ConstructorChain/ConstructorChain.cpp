@@ -5,38 +5,38 @@ using namespace std;
 class Something
 {
 public:
-	Something() { print("2"); }
-	virtual ~Something() { print("2"); }
+  Something () { print ("2"); }
+  virtual ~Something () { print ("2"); }
 };
 
 class Base
 {
 public:
-	Base() { print("1"); }
-	virtual ~Base() { print("1"); }
+  Base () { print ("1"); }
+  virtual ~Base () { print ("1"); }
 };
 
 class Derived : public Base
 {
 public:
-	Derived() { print("3"); }
-	virtual ~Derived() override { print("3"); }
+  Derived () { print ("3"); }
+  virtual ~Derived () override { print ("3"); }
 
 private:
-	Something m_dataMember;
+  Something m_dataMember;
 };
 
-
-int main()
+int
+main ()
 {
-	{
-		Derived myDerived;
-	}
-	
-	println("");
+  {
+    Derived myDerived;
+  }
 
-	{
-		Base* ptr{ new Derived{} };
-		delete ptr;
-	}
+  println ("");
+
+  {
+    Base *ptr{ new Derived{} };
+    delete ptr;
+  }
 }

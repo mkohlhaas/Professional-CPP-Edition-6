@@ -2,44 +2,52 @@
 
 using namespace std;
 
-double AirlineTicket::calculatePriceInDollars() const
+double
+AirlineTicket::calculatePriceInDollars () const
 {
-	if (hasEliteSuperRewardsStatus()) {
-		// Elite Super Rewards customers fly for free!
-		return 0;
-	}
+  if (hasEliteSuperRewardsStatus ())
+    {
+      // Elite Super Rewards customers fly for free!
+      return 0;
+    }
 
-	// The cost of the ticket is the number of miles times 0.1.
-	// Real airlines probably have a more complicated formula!
-	return getNumberOfMiles() * 0.1;
+  // The cost of the ticket is the number of miles times 0.1.
+  // Real airlines probably have a more complicated formula!
+  return getNumberOfMiles () * 0.1;
 }
 
-string AirlineTicket::getPassengerName() const
+string
+AirlineTicket::getPassengerName () const
 {
-	return m_passengerName;
+  return m_passengerName;
 }
 
-void AirlineTicket::setPassengerName(string name)
+void
+AirlineTicket::setPassengerName (string name)
 {
-	m_passengerName = name;
+  m_passengerName = name;
 }
 
-int AirlineTicket::getNumberOfMiles() const
+int
+AirlineTicket::getNumberOfMiles () const
 {
-	return m_numberOfMiles;
+  return m_numberOfMiles;
 }
 
-void AirlineTicket::setNumberOfMiles(int miles)
+void
+AirlineTicket::setNumberOfMiles (int miles)
 {
-	m_numberOfMiles = miles;
+  m_numberOfMiles = miles;
 }
 
-bool AirlineTicket::hasEliteSuperRewardsStatus() const
+bool
+AirlineTicket::hasEliteSuperRewardsStatus () const
 {
-	return m_hasEliteSuperRewardsStatus;
+  return m_hasEliteSuperRewardsStatus;
 }
 
-void AirlineTicket::setHasEliteSuperRewardsStatus(bool status)
+void
+AirlineTicket::setHasEliteSuperRewardsStatus (bool status)
 {
-	m_hasEliteSuperRewardsStatus = status;
+  m_hasEliteSuperRewardsStatus = status;
 }

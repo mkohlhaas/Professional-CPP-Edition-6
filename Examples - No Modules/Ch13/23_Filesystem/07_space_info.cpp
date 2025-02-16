@@ -1,12 +1,13 @@
-#include <print>
 #include <filesystem>
+#include <print>
 
 using namespace std;
 using namespace std::filesystem;
 
-int main()
+int
+main ()
 {
-	space_info s{ space("c:\\") };
-	println("Capacity: {}", s.capacity);
-	println("Free: {}", s.free);
+  space_info s{ space ("c:\\") };
+  println ("Capacity: {}", s.capacity);
+  println ("Free: {}", s.free);
 }

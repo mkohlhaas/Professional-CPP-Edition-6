@@ -2,7 +2,8 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	auto upper{ toupper(L'é', locale{ "fr-FR" }) };  // É
+  auto upper{ toupper (L'é', locale{ "fr-FR" }) }; // É
 }

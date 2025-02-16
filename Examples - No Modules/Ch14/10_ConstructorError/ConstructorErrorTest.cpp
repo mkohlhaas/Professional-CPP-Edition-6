@@ -1,7 +1,8 @@
 #include "Element.h"
 #include "Matrix.h"
 
-int main()
+int
+main ()
 {
-	Matrix<Element> m{ 10, 10 };
+  Matrix<Element> m{ 10, 10 };
 }

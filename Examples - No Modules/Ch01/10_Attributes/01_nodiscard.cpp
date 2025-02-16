@@ -1,9 +1,11 @@
-[[nodiscard]] int func()
+[[nodiscard]] int
+func ()
 {
-	return 42;
+  return 42;
 }
 
-int main()
+int
+main ()
 {
-	func();
+  func ();
 }

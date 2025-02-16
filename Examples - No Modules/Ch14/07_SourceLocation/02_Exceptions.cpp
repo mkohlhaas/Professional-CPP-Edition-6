@@ -1,43 +1,53 @@
+#include <exception>
+#include <iostream>
 #include <print>
 #include <source_location>
 #include <string>
-#include <exception>
 #include <utility>
-#include <iostream>
 
 using namespace std;
 
 class MyException : public exception
 {
 public:
-	explicit MyException(string message,
-		source_location location = source_location::current())
-		: m_message{ move(message) }
-		, m_location{ move(location) }
-	{
-	}
+  explicit MyException (string message, source_location location = source_location::current ())
+      : m_message{ move (message) }, m_location{ move (location) }
+  {
+  }
 
-	const char* what() const noexcept override { return m_message.c_str(); }
+  const char *
+  what () const noexcept override
+  {
+    return m_message.c_str ();
+  }
 
-	virtual const source_location& where() const noexcept { return m_location; }
+  virtual const source_location &
+  where () const noexcept
+  {
+    return m_location;
+  }
 
 private:
-	string m_message;
-	source_location m_location;
+  string          m_message;
+  source_location m_location;
 };
 
-void doSomething()
+void
+doSomething ()
 {
-	throw MyException{ "Throwing MyException." };
+  throw MyException{ "Throwing MyException." };
 }
 
-int main()
+int
+main ()
 {
-	try {
-		doSomething();
-	} catch (const MyException& e) {
-		const auto& location{ e.where() };
-		println(cerr, "Caught: '{}' at line {} in {}.",
-			e.what(), location.line(), location.function_name());
-	}
+  try
+    {
+      doSomething ();
+    }
+  catch (const MyException &e)
+    {
+      const auto &location{ e.where () };
+      println (cerr, "Caught: '{}' at line {} in {}.", e.what (), location.line (), location.function_name ());
+    }
 }

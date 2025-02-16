@@ -1,6 +1,7 @@
 import person;
 
-int main()
+int
+main ()
 {
-	Person p;
+  Person p;
 }

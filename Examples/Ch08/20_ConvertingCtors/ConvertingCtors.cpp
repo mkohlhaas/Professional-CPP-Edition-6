@@ -1,19 +1,22 @@
 class MyClass
 {
 public:
-	explicit MyClass(int) { }
-	explicit MyClass(int, int) { }
+  explicit MyClass (int) {}
+  explicit MyClass (int, int) {}
 };
 
-
-void process(const MyClass& c) { }
-
-int main()
+void
+process (const MyClass &c)
 {
-	//process(1);
-	//process({ 1 });
-	//process({ 1, 2 });
+}
 
-	process(MyClass{ 1 });
-	process(MyClass{ 1, 2 });
+int
+main ()
+{
+  // process(1);
+  // process({ 1 });
+  // process({ 1, 2 });
+
+  process (MyClass{ 1 });
+  process (MyClass{ 1, 2 });
 }

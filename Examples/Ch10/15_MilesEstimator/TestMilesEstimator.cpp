@@ -3,15 +3,14 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	MilesEstimator myMilesEstimator;
-	myMilesEstimator.setGallonsLeft(2);
-	println("Normal estimator can go {} more miles.",
-		myMilesEstimator.getMilesLeft());
+  MilesEstimator myMilesEstimator;
+  myMilesEstimator.setGallonsLeft (2);
+  println ("Normal estimator can go {} more miles.", myMilesEstimator.getMilesLeft ());
 
-	EfficientCarMilesEstimator myEstimator;
-	myEstimator.setGallonsLeft(2);
-	println("Efficient estimator can go {} more miles.",
-		myEstimator.getMilesLeft());
+  EfficientCarMilesEstimator myEstimator;
+  myEstimator.setGallonsLeft (2);
+  println ("Efficient estimator can go {} more miles.", myEstimator.getMilesLeft ());
 }

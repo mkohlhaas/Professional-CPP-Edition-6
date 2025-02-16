@@ -1,14 +1,15 @@
 class MyClass
 {
 public:
-	MyClass(int& ref) : m_ref{ ref } { /* Body of constructor */ }
+  MyClass (int &ref) : m_ref{ ref } { /* Body of constructor */ }
 
 private:
-	int& m_ref;
+  int &m_ref;
 };
 
-int main()
+int
+main ()
 {
-	int i{ 123 };
-	MyClass m{ i };
+  int     i{ 123 };
+  MyClass m{ i };
 }

@@ -1,12 +1,21 @@
 #include "Simple.h"
 
-Simple::Simple() : m_publicInteger{ 40 }
+Simple::Simple () : m_publicInteger{ 40 }
 {
-	// Implementation of constructor
+  // Implementation of constructor
 }
 
-void Simple::publicMemberFunction() { /* Implementation */ }
+void
+Simple::publicMemberFunction ()
+{ /* Implementation */
+}
 
-void Simple::protectedMemberFunction() { /* Implementation */ }
+void
+Simple::protectedMemberFunction ()
+{ /* Implementation */
+}
 
-void Simple::privateMemberFunction() { /* Implementation */ }
+void
+Simple::privateMemberFunction ()
+{ /* Implementation */
+}

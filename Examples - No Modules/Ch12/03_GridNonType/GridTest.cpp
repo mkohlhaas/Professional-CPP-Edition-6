@@ -3,23 +3,25 @@
 
 using namespace std;
 
-constexpr size_t getHeight()
+constexpr size_t
+getHeight ()
 {
-	return 10;
+  return 10;
 }
 
-int main()
+int
+main ()
 {
-	Grid<int, 10, 10> myGrid;
-	Grid<int, 10, 10> anotherGrid;
+  Grid<int, 10, 10> myGrid;
+  Grid<int, 10, 10> anotherGrid;
 
-	myGrid.at(2, 3) = 42;
-	anotherGrid = myGrid;
+  myGrid.at (2, 3) = 42;
+  anotherGrid      = myGrid;
 
-	println("{}", anotherGrid.at(2, 3).value_or(0));
+  println ("{}", anotherGrid.at (2, 3).value_or (0));
 
-	const size_t height{ 10 };
-	Grid<int, 10, height> testGrid;
+  const size_t          height{ 10 };
+  Grid<int, 10, height> testGrid;
 
-	Grid<double, 2, getHeight()> myDoubleGrid;
+  Grid<double, 2, getHeight ()> myDoubleGrid;
 }

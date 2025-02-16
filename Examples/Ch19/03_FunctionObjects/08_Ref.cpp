@@ -2,19 +2,21 @@ import std;
 
 using namespace std;
 
-void increment(int& value)
+void
+increment (int &value)
 {
-	++value;
+  ++value;
 }
 
-int main()
+int
+main ()
 {
-	int index{ 0 };
-	increment(index);
+  int index{ 0 };
+  increment (index);
 
-	auto incr1{ bind(increment, index) };
-	incr1();
+  auto incr1{ bind (increment, index) };
+  incr1 ();
 
-	auto incr2{ bind(increment, ref(index)) };
-	incr2();
+  auto incr2{ bind (increment, ref (index)) };
+  incr2 ();
 }

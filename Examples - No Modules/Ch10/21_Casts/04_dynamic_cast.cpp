@@ -6,31 +6,35 @@ using namespace std;
 class Base
 {
 public:
-	virtual ~Base() = default;
+  virtual ~Base () = default;
 };
 
 class Derived : public Base
 {
 public:
-	virtual ~Derived() = default;
+  virtual ~Derived () = default;
 };
 
-int main()
+int
+main ()
 {
-	Base* b;
-	Derived* d{ new Derived{} };
+  Base    *b;
+  Derived *d{ new Derived{} };
 
-	b = d;
-	d = dynamic_cast<Derived*>(b);
+  b = d;
+  d = dynamic_cast<Derived *> (b);
 
-	Base base;
-	Derived derived;
+  Base    base;
+  Derived derived;
 
-	Base& br{ base };
+  Base &br{ base };
 
-	try {
-		Derived& dr{ dynamic_cast<Derived&>(br) };
-	} catch (const bad_cast&) {
-		println("Bad cast!");
-	}
+  try
+    {
+      Derived &dr{ dynamic_cast<Derived &> (br) };
+    }
+  catch (const bad_cast &)
+    {
+      println ("Bad cast!");
+    }
 }

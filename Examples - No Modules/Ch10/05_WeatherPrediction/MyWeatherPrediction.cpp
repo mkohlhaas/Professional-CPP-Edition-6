@@ -3,43 +3,50 @@
 
 using namespace std;
 
-void MyWeatherPrediction::setCurrentTempCelsius(int temp)
+void
+MyWeatherPrediction::setCurrentTempCelsius (int temp)
 {
-	int fahrenheitTemp{ convertCelsiusToFahrenheit(temp) };
-	setCurrentTempFahrenheit(fahrenheitTemp);
+  int fahrenheitTemp{ convertCelsiusToFahrenheit (temp) };
+  setCurrentTempFahrenheit (fahrenheitTemp);
 }
 
-int MyWeatherPrediction::getTomorrowTempCelsius() const
+int
+MyWeatherPrediction::getTomorrowTempCelsius () const
 {
-	int fahrenheitTemp{ getTomorrowTempFahrenheit() };
-	return convertFahrenheitToCelsius(fahrenheitTemp);
+  int fahrenheitTemp{ getTomorrowTempFahrenheit () };
+  return convertFahrenheitToCelsius (fahrenheitTemp);
 }
 
-void MyWeatherPrediction::showResult() const
+void
+MyWeatherPrediction::showResult () const
 {
-	println("Tomorrow will be {} degrees Celsius ({} degrees Fahrenheit)",
-		getTomorrowTempCelsius(), getTomorrowTempFahrenheit());
+  println ("Tomorrow will be {} degrees Celsius ({} degrees Fahrenheit)", getTomorrowTempCelsius (),
+           getTomorrowTempFahrenheit ());
 
-	println("Chance of rain is {}%", getChanceOfRain() * 100);
+  println ("Chance of rain is {}%", getChanceOfRain () * 100);
 
-	if (getChanceOfRain() > 0.5) {
-		println("Bring an umbrella!");
-	}
+  if (getChanceOfRain () > 0.5)
+    {
+      println ("Bring an umbrella!");
+    }
 }
 
-int MyWeatherPrediction::convertCelsiusToFahrenheit(int celsius)
+int
+MyWeatherPrediction::convertCelsiusToFahrenheit (int celsius)
 {
-	return static_cast<int>((9.0 / 5.0) * celsius + 32);
+  return static_cast<int> ((9.0 / 5.0) * celsius + 32);
 }
 
-int MyWeatherPrediction::convertFahrenheitToCelsius(int fahrenheit)
+int
+MyWeatherPrediction::convertFahrenheitToCelsius (int fahrenheit)
 {
-	return static_cast<int>((5.0 / 9.0) * (fahrenheit - 32));
+  return static_cast<int> ((5.0 / 9.0) * (fahrenheit - 32));
 }
 
-string MyWeatherPrediction::getTemperature() const
+string
+MyWeatherPrediction::getTemperature () const
 {
-	// Add °F to the string.
-	// Note: \u00B0 is the ISO/IEC 10646 representation of the degree symbol.
-	return WeatherPrediction::getTemperature() + "\u00B0F";
+  // Add °F to the string.
+  // Note: \u00B0 is the ISO/IEC 10646 representation of the degree symbol.
+  return WeatherPrediction::getTemperature () + "\u00B0F";
 }

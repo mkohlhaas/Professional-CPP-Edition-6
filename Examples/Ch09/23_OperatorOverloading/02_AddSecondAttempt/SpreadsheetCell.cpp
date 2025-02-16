@@ -4,56 +4,57 @@ import std;
 
 using namespace std;
 
-SpreadsheetCell::SpreadsheetCell(double initialValue)
-	: m_value { initialValue }
+SpreadsheetCell::SpreadsheetCell (double initialValue) : m_value{ initialValue } {}
+
+SpreadsheetCell::SpreadsheetCell (string_view initialValue) : m_value{ stringToDouble (initialValue) } {}
+
+void
+SpreadsheetCell::set (double value)
 {
+  m_value = value;
 }
 
-SpreadsheetCell::SpreadsheetCell(string_view initialValue)
-	: m_value { stringToDouble(initialValue) }
+double
+SpreadsheetCell::getValue () const
 {
+  return m_value;
 }
 
-void SpreadsheetCell::set(double value)
+void
+SpreadsheetCell::set (string_view value)
 {
-	m_value = value;
+  m_value = stringToDouble (value);
 }
 
-double SpreadsheetCell::getValue() const
+string
+SpreadsheetCell::getString () const
 {
-	return m_value;
+  return doubleToString (m_value);
 }
 
-void SpreadsheetCell::set(string_view value)
+string
+SpreadsheetCell::doubleToString (double value)
 {
-	m_value = stringToDouble(value);
+  return to_string (value);
 }
 
-string SpreadsheetCell::getString() const
+double
+SpreadsheetCell::stringToDouble (string_view value)
 {
-	return doubleToString(m_value);
+  double number{ 0 };
+  from_chars (value.data (), value.data () + value.size (), number);
+  return number;
 }
 
-string SpreadsheetCell::doubleToString(double value)
+SpreadsheetCell
+SpreadsheetCell::operator+ (const SpreadsheetCell &cell) const
 {
-	return to_string(value);
-}
-
-double SpreadsheetCell::stringToDouble(string_view value)
-{
-	double number{ 0 };
-	from_chars(value.data(), value.data() + value.size(), number);
-	return number;
-}
-
-SpreadsheetCell SpreadsheetCell::operator+(const SpreadsheetCell& cell) const
-{
-	return SpreadsheetCell { getValue() + cell.getValue() };
+  return SpreadsheetCell{ getValue () + cell.getValue () };
 }
 
 /*
 SpreadsheetCell SpreadsheetCell::operator+(double rhs) const
 {
-	return SpreadsheetCell { getValue() + rhs };
+        return SpreadsheetCell { getValue() + rhs };
 }
 */

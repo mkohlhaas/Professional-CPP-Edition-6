@@ -2,8 +2,9 @@
 
 #include <print>
 
-int main()
+int
+main ()
 {
-	std::println("Hello, World!");
-	return 0;
+  std::println ("Hello, World!");
+  return 0;
 }

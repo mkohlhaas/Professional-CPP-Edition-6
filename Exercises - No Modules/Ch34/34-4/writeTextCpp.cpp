@@ -3,8 +3,9 @@
 
 using namespace std;
 
-void writeTextFromCpp(const char* text)
+void
+writeTextFromCpp (const char *text)
 {
-	println("C++ is writing:");
-	println("{}", text);
+  println ("C++ is writing:");
+  println ("{}", text);
 }

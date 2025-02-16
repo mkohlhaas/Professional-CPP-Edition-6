@@ -2,30 +2,36 @@ import std;
 
 using namespace std;
 
-void funcOne();
-void funcTwo();
+void funcOne ();
+void funcTwo ();
 
-int main()
+int
+main ()
 {
-	try {
-		funcOne();
-	} catch (const exception& /* e */) {
-		println(cerr, "Exception caught!");
-		return 1;
-	}
+  try
+    {
+      funcOne ();
+    }
+  catch (const exception & /* e */)
+    {
+      println (cerr, "Exception caught!");
+      return 1;
+    }
 }
 
-void funcOne()
+void
+funcOne ()
 {
-	string str1;
-	auto str2{ make_unique<string>("hello") };
-	funcTwo();
+  string str1;
+  auto   str2{ make_unique<string> ("hello") };
+  funcTwo ();
 }
 
-void funcTwo()
+void
+funcTwo ()
 {
-	ifstream fileStream;
-	fileStream.open("filename");
-	throw exception {};
-	fileStream.close();
+  ifstream fileStream;
+  fileStream.open ("filename");
+  throw exception{};
+  fileStream.close ();
 }

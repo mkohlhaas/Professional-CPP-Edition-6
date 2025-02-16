@@ -4,134 +4,148 @@
 
 using namespace std;
 
-SpreadsheetCell::SpreadsheetCell(double initialValue)
-	: m_value{ initialValue }
+SpreadsheetCell::SpreadsheetCell (double initialValue) : m_value{ initialValue } {}
+
+SpreadsheetCell::SpreadsheetCell (string_view initialValue) : m_value{ stringToDouble (initialValue) } {}
+
+void
+SpreadsheetCell::set (double value)
 {
+  m_value = value;
 }
 
-SpreadsheetCell::SpreadsheetCell(string_view initialValue)
-	: m_value{ stringToDouble(initialValue) }
+void
+SpreadsheetCell::set (string_view value)
 {
+  m_value = stringToDouble (value);
 }
 
-void SpreadsheetCell::set(double value)
+string
+SpreadsheetCell::doubleToString (double value)
 {
-	m_value = value;
+  return to_string (value);
 }
 
-void SpreadsheetCell::set(string_view value)
+double
+SpreadsheetCell::stringToDouble (string_view value)
 {
-	m_value = stringToDouble(value);
+  double number{ 0 };
+  from_chars (value.data (), value.data () + value.size (), number);
+  return number;
 }
 
-string SpreadsheetCell::doubleToString(double value)
+SpreadsheetCell
+operator+ (const SpreadsheetCell &lhs, const SpreadsheetCell &rhs)
 {
-	return to_string(value);
+  auto result{ lhs }; // Local copy
+  result += rhs;      // Forward to +=()
+  return result;
 }
 
-double SpreadsheetCell::stringToDouble(string_view value)
+SpreadsheetCell
+operator- (const SpreadsheetCell &lhs, const SpreadsheetCell &rhs)
 {
-	double number{ 0 };
-	from_chars(value.data(), value.data() + value.size(), number);
-	return number;
+  auto result{ lhs }; // Local copy
+  result -= rhs;      // Forward to -=()
+  return result;
 }
 
-SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs)
+SpreadsheetCell
+operator* (const SpreadsheetCell &lhs, const SpreadsheetCell &rhs)
 {
-	auto result{ lhs };  // Local copy
-	result += rhs;       // Forward to +=()
-	return result;
+  auto result{ lhs }; // Local copy
+  result *= rhs;      // Forward to *=()
+  return result;
 }
 
-SpreadsheetCell operator-(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs)
+SpreadsheetCell
+operator/ (const SpreadsheetCell &lhs, const SpreadsheetCell &rhs)
 {
-	auto result{ lhs };  // Local copy
-	result -= rhs;       // Forward to -=()
-	return result;
+  auto result{ lhs }; // Local copy
+  result /= rhs;      // Forward to /=()
+  return result;
 }
 
-SpreadsheetCell operator*(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs)
+SpreadsheetCell &
+SpreadsheetCell::operator+= (const SpreadsheetCell &rhs)
 {
-	auto result{ lhs };  // Local copy
-	result *= rhs;       // Forward to *=()
-	return result;
+  set (getValue () + rhs.getValue ());
+  return *this;
 }
 
-SpreadsheetCell operator/(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs)
+SpreadsheetCell &
+SpreadsheetCell::operator-= (const SpreadsheetCell &rhs)
 {
-	auto result{ lhs };  // Local copy
-	result /= rhs;       // Forward to /=()
-	return result;
+  set (getValue () - rhs.getValue ());
+  return *this;
 }
 
-SpreadsheetCell& SpreadsheetCell::operator+=(const SpreadsheetCell& rhs)
+SpreadsheetCell &
+SpreadsheetCell::operator*= (const SpreadsheetCell &rhs)
 {
-	set(getValue() + rhs.getValue());
-	return *this;
+  set (getValue () * rhs.getValue ());
+  return *this;
 }
 
-SpreadsheetCell& SpreadsheetCell::operator-=(const SpreadsheetCell& rhs)
+SpreadsheetCell &
+SpreadsheetCell::operator/= (const SpreadsheetCell &rhs)
 {
-	set(getValue() - rhs.getValue());
-	return *this;
+  if (rhs.getValue () == 0)
+    {
+      throw invalid_argument{ "Divide by zero." };
+    }
+  set (getValue () / rhs.getValue ());
+  return *this;
 }
 
-SpreadsheetCell& SpreadsheetCell::operator*=(const SpreadsheetCell& rhs)
+SpreadsheetCell
+SpreadsheetCell::operator- () const
 {
-	set(getValue() * rhs.getValue());
-	return *this;
+  return SpreadsheetCell{ -getValue () };
 }
 
-SpreadsheetCell& SpreadsheetCell::operator/=(const SpreadsheetCell& rhs)
+SpreadsheetCell &
+SpreadsheetCell::operator++ ()
 {
-	if (rhs.getValue() == 0) {
-		throw invalid_argument{ "Divide by zero." };
-	}
-	set(getValue() / rhs.getValue());
-	return *this;
+  set (getValue () + 1);
+  return *this;
 }
 
-SpreadsheetCell SpreadsheetCell::operator-() const
+SpreadsheetCell
+SpreadsheetCell::operator++ (int)
 {
-	return SpreadsheetCell{ -getValue() };
+  auto oldCell{ *this }; // Save current value
+  ++(*this);             // Increment using prefix ++
+  return oldCell;        // Return the old value
 }
 
-SpreadsheetCell& SpreadsheetCell::operator++()
+SpreadsheetCell &
+SpreadsheetCell::operator-- ()
 {
-	set(getValue() + 1);
-	return *this;
+  set (getValue () - 1);
+  return *this;
 }
 
-SpreadsheetCell SpreadsheetCell::operator++(int)
+SpreadsheetCell
+SpreadsheetCell::operator-- (int)
 {
-	auto oldCell{ *this }; // Save current value
-	++(*this);           // Increment using prefix ++
-	return oldCell;      // Return the old value
+  auto oldCell{ *this }; // Save current value
+  --(*this);             // Decrement using prefix --
+  return oldCell;        // Return the old value
 }
 
-SpreadsheetCell& SpreadsheetCell::operator--()
+ostream &
+operator<< (ostream &ostr, const SpreadsheetCell &cell)
 {
-	set(getValue() - 1);
-	return *this;
+  ostr << cell.getValue ();
+  return ostr;
 }
 
-SpreadsheetCell SpreadsheetCell::operator--(int)
+istream &
+operator>> (istream &istr, SpreadsheetCell &cell)
 {
-	auto oldCell{ *this }; // Save current value
-	--(*this);           // Decrement using prefix --
-	return oldCell;      // Return the old value
-}
-
-ostream& operator<<(ostream& ostr, const SpreadsheetCell& cell)
-{
-	ostr << cell.getValue();
-	return ostr;
-}
-
-istream& operator>>(istream& istr, SpreadsheetCell& cell)
-{
-	double value;
-	istr >> value;
-	cell.set(value);
-	return istr;
+  double value;
+  istr >> value;
+  cell.set (value);
+  return istr;
 }

@@ -3,10 +3,11 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Person person { "John", "Doe" };
-	println("Initials = {}", person.getInitials());
+  Person person{ "John", "Doe" };
+  println ("Initials = {}", person.getInitials ());
 
-	println("Initials = {}", Person{ "Marc", "Gregoire" }.getInitials());
+  println ("Initials = {}", Person{ "Marc", "Gregoire" }.getInitials ());
 }

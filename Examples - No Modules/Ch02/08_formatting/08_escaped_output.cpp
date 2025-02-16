@@ -2,11 +2,12 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	// Escaped output
-	println("|{:?}|", "Hello\tWorld!\n");  // |Hello\tWorld!\n|
-	println("|{:?}|", "\"");               // |"\""|
-	println("|{:?}|", '\'');               // |'\''|
-	println("|{:?}|", '"');                // |'"'|
+  // Escaped output
+  println ("|{:?}|", "Hello\tWorld!\n"); // |Hello\tWorld!\n|
+  println ("|{:?}|", "\"");              // |"\""|
+  println ("|{:?}|", '\'');              // |'\''|
+  println ("|{:?}|", '"');               // |'"'|
 }

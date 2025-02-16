@@ -1,7 +1,8 @@
 import matrix;
 import element;
 
-int main()
+int
+main ()
 {
-	Matrix<Element> m{ 10, 10 };
+  Matrix<Element> m{ 10, 10 };
 }

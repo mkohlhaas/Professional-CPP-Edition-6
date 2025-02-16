@@ -1,13 +1,15 @@
-#include <print>
 #include <filesystem>
+#include <print>
 
 using namespace std;
 using namespace std::filesystem;
 
-int main()
+int
+main ()
 {
-	path p{ R"(C:\Foo\Bar)" };
-	for (const auto& component : p) {
-		println("{}", component.string());
-	}
+  path p{ R"(C:\Foo\Bar)" };
+  for (const auto &component : p)
+    {
+      println ("{}", component.string ());
+    }
 }

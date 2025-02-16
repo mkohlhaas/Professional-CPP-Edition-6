@@ -2,13 +2,15 @@ import std;
 
 using namespace std;
 
-void mysteryFunction(const string* someString)
+void
+mysteryFunction (const string *someString)
 {
-	*someString = "Test";  // Will not compile.
+  *someString = "Test"; // Will not compile.
 }
 
-int main()
+int
+main ()
 {
-	string myString{ "The string" };
-	mysteryFunction(&myString);  // &myString is a string*
+  string myString{ "The string" };
+  mysteryFunction (&myString); // &myString is a string*
 }

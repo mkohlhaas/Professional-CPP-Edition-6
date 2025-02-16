@@ -1,9 +1,10 @@
 import simulator;
 
-int main()
+int
+main ()
 {
-	using namespace Simulator;
+  using namespace Simulator;
 
-	CarSimulator carSim;
-	BikeSimulator bikeSim;
+  CarSimulator  carSim;
+  BikeSimulator bikeSim;
 }

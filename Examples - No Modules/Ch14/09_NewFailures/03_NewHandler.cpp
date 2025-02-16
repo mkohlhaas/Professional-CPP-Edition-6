@@ -1,36 +1,42 @@
+#include <cstddef>
+#include <iostream>
+#include <limits>
+#include <new>
 #include <print>
 #include <source_location>
-#include <limits>
-#include <iostream>
-#include <cstddef>
-#include <new>
 
 using namespace std;
 
-class please_terminate_me : public bad_alloc { };
-
-void myNewHandler()
+class please_terminate_me : public bad_alloc
 {
-	println(cerr, "Unable to allocate memory.");
-	throw please_terminate_me{};
+};
+
+void
+myNewHandler ()
+{
+  println (cerr, "Unable to allocate memory.");
+  throw please_terminate_me{};
 }
 
-int main()
+int
+main ()
 {
-	try {
-		// Set the new new_handler and save the old one.
-		new_handler oldHandler{ set_new_handler(myNewHandler) };
+  try
+    {
+      // Set the new new_handler and save the old one.
+      new_handler oldHandler{ set_new_handler (myNewHandler) };
 
-		// Generate allocation error.
-		size_t numInts{ numeric_limits<size_t>::max() };
-		int* ptr{ new int[numInts] };
+      // Generate allocation error.
+      size_t numInts{ numeric_limits<size_t>::max () };
+      int   *ptr{ new int[numInts] };
 
-		// Reset the old new_handler.
-		set_new_handler(oldHandler);
-	} catch (const please_terminate_me&) {
-		auto location{ source_location::current() };
-		println(cerr, "{}({}): Terminating program.",
-			location.file_name(), location.line());
-		return 1;
-	}
+      // Reset the old new_handler.
+      set_new_handler (oldHandler);
+    }
+  catch (const please_terminate_me &)
+    {
+      auto location{ source_location::current () };
+      println (cerr, "{}({}): Terminating program.", location.file_name (), location.line ());
+      return 1;
+    }
 }

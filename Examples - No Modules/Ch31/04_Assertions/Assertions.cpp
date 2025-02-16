@@ -1,21 +1,23 @@
-#include <vector>
 #include <cassert>
+#include <vector>
 
 using namespace std;
 
-void process(const vector<int>& coordinate)
+void
+process (const vector<int> &coordinate)
 {
-	//assert(coordinate.size() == 3);
+  // assert(coordinate.size() == 3);
 
-	assert(("A custom message...", coordinate.size() == 3));
-	
-	//assert(!"This should never happen.");
-	
-	// ...
+  assert (("A custom message...", coordinate.size () == 3));
+
+  // assert(!"This should never happen.");
+
+  // ...
 }
 
-int main()
+int
+main ()
 {
-	process({ 1, 2, 3 });
-	process({ 1, 2 });
+  process ({ 1, 2, 3 });
+  process ({ 1, 2 });
 }

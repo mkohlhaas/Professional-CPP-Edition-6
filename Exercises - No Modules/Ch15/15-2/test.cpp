@@ -1,28 +1,29 @@
 #include "Person.h"
-#include <print>
 #include <iostream>
+#include <print>
 #include <sstream>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Person person{ "John", "Doe" };
+  Person person{ "John", "Doe" };
 
-	// Write person to standard output console.
-	cout << person << endl;
+  // Write person to standard output console.
+  cout << person << endl;
 
-	// Write person to a string stream.
-	ostringstream output;
-	output << person;
-	// Verify the contents of the string stream.
-	println("{}", output.str());
+  // Write person to a string stream.
+  ostringstream output;
+  output << person;
+  // Verify the contents of the string stream.
+  println ("{}", output.str ());
 
-	// Read the person back from the string stream.
-	istringstream input{ output.str() };
-	Person person2;
-	input >> person2;
+  // Read the person back from the string stream.
+  istringstream input{ output.str () };
+  Person        person2;
+  input >> person2;
 
-	// Verify the read-back person.
-	cout << person2 << endl;
+  // Verify the read-back person.
+  cout << person2 << endl;
 }

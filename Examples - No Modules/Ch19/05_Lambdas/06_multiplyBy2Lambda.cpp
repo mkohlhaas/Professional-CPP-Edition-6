@@ -1,24 +1,26 @@
-#include <print>
 #include <functional>
+#include <print>
 
 using namespace std;
 
-function<int(void)> multiplyBy2Lambda(int x)
+function<int (void)>
+multiplyBy2Lambda (int x)
 {
-	return [x]{ return 2 * x; };
+  return [x] { return 2 * x; };
 }
 
 // Using function return type deduction
-//auto multiplyBy2Lambda(int x)
+// auto multiplyBy2Lambda(int x)
 //{
 //	return [x]{ return 2 * x; };
 //}
 
-int main()
+int
+main ()
 {
-	//function<int(void)> fn{ multiplyBy2Lambda(5) };
-	//println("{}", fn());
+  // function<int(void)> fn{ multiplyBy2Lambda(5) };
+  // println("{}", fn());
 
-	auto fn{ multiplyBy2Lambda(5) };
-	println("{}", fn());
+  auto fn{ multiplyBy2Lambda (5) };
+  println ("{}", fn ());
 }

@@ -1,11 +1,16 @@
-void thirdPartyLibraryFunction(char* str) {}
-
-void f(const char* str)
+void
+thirdPartyLibraryFunction (char *str)
 {
-	thirdPartyLibraryFunction(const_cast<char*>(str));
 }
 
-int main()
+void
+f (const char *str)
 {
-	f("Hello World");
+  thirdPartyLibraryFunction (const_cast<char *> (str));
+}
+
+int
+main ()
+{
+  f ("Hello World");
 }

@@ -6,11 +6,12 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	int uninitializedInt;
-	int initializedInt{ 7 };
+  int uninitializedInt;
+  int initializedInt{ 7 };
 
-	println("{} is a random value", uninitializedInt);
-	println("{} was assigned as an initial value", initializedInt);
+  println ("{} is a random value", uninitializedInt);
+  println ("{} was assigned as an initial value", initializedInt);
 }

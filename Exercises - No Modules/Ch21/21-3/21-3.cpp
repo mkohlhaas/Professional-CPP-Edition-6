@@ -1,21 +1,24 @@
+#include <iostream>
 #include <print>
 #include <regex>
 #include <string>
-#include <iostream>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	regex r{ "^(.*?)//.*$" };
-	const string replacement{ "$1" };
-	while (true) {
-		println("Enter a source code snippet, terminated with @:");
-		string str;
-		if (!getline(cin, str, '@')) {
-			break;
-		}
+  regex        r{ "^(.*?)//.*$" };
+  const string replacement{ "$1" };
+  while (true)
+    {
+      println ("Enter a source code snippet, terminated with @:");
+      string str;
+      if (!getline (cin, str, '@'))
+        {
+          break;
+        }
 
-		println("{}", regex_replace(str, r, replacement));
-	}
+      println ("{}", regex_replace (str, r, replacement));
+    }
 }

@@ -4,9 +4,14 @@ using namespace System;
 
 namespace MyCppLibrary
 {
-	public ref class MyCppRefClass
-	{
-	public:
-		double TripleIt(double value) { return value * 3.0; }
-	};
+public
+ref class MyCppRefClass
+{
+public:
+  double
+  TripleIt (double value)
+  {
+    return value * 3.0;
+  }
+};
 }

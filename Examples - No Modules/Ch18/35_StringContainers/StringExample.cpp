@@ -3,23 +3,26 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	string myString;
+  string myString;
 
-	myString.insert(cend(myString), 'h');
-	myString.insert(cend(myString), 'e');
-	myString.push_back('l');
-	myString.push_back('l');
-	myString.push_back('o');
+  myString.insert (cend (myString), 'h');
+  myString.insert (cend (myString), 'e');
+  myString.push_back ('l');
+  myString.push_back ('l');
+  myString.push_back ('o');
 
-	for (const auto& letter : myString) {
-		print("{}", letter);
-	}
-	println("");
+  for (const auto &letter : myString)
+    {
+      print ("{}", letter);
+    }
+  println ("");
 
-	for (auto it{ cbegin(myString) }; it != cend(myString); ++it) {
-		print("{}", *it);
-	}
-	println("");
+  for (auto it{ cbegin (myString) }; it != cend (myString); ++it)
+    {
+      print ("{}", *it);
+    }
+  println ("");
 }

@@ -1,15 +1,16 @@
 #include "SpreadsheetCell.h"
-#include <print>
 #include <memory>
+#include <print>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	auto myCellp{ make_unique<SpreadsheetCell>() };
-	// Equivalent to:
-	// unique_ptr<SpreadsheetCell> myCellp{ new SpreadsheetCell{ } };
-	
-	myCellp->setValue(3.7);
-	println("cell 1: {} {}", myCellp->getValue(), myCellp->getString());
+  auto myCellp{ make_unique<SpreadsheetCell> () };
+  // Equivalent to:
+  // unique_ptr<SpreadsheetCell> myCellp{ new SpreadsheetCell{ } };
+
+  myCellp->setValue (3.7);
+  println ("cell 1: {} {}", myCellp->getValue (), myCellp->getString ());
 }

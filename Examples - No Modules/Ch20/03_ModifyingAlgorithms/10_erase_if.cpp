@@ -1,15 +1,16 @@
-#include <print>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <print>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	vector<string> values{ "", "one", "", "two", "three", "four" };
+  vector<string> values{ "", "one", "", "two", "three", "four" };
 
-	println("{:n}", values);
-	erase_if(values, [](const string& str) { return str.empty(); });
-	println("{:n}", values);
+  println ("{:n}", values);
+  erase_if (values, [] (const string &str) { return str.empty (); });
+  println ("{:n}", values);
 }

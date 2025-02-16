@@ -3,16 +3,17 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	SpreadsheetCell cell{ 1.23 };
-	
-	double d1{ cell };
-	println("{}", d1);
+  SpreadsheetCell cell{ 1.23 };
 
-	string str1 = cell;
-	println("{}", str1);
+  double d1{ cell };
+  println ("{}", d1);
 
-	string str2{ static_cast<string>(cell) };
-	println("{}", str2);
+  string str1 = cell;
+  println ("{}", str1);
+
+  string str2{ static_cast<string> (cell) };
+  println ("{}", str2);
 }

@@ -1,15 +1,16 @@
-#include <print>
 #include <chrono>
 #include <locale>
+#include <print>
 
 using namespace std;
 using namespace std::chrono;
 
-int main()
+int
+main ()
 {
-	// Set the global locale to the user's local (see Chapter 21).
-	locale::global(locale{ "" });
+  // Set the global locale to the user's local (see Chapter 21).
+  locale::global (locale{ "" });
 
-	auto date{ 2020y / June / 22d };
-	println("{:L} was a {:L%A}", date, weekday{ date });
+  auto date{ 2020y / June / 22d };
+  println ("{:L} was a {:L%A}", date, weekday{ date });
 }

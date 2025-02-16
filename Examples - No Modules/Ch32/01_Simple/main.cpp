@@ -1,8 +1,9 @@
-#include "Simple.h"
 #include "DerivedSimple.h"
+#include "Simple.h"
 
-int main()
+int
+main ()
 {
-	Simple mySimple;
-	DerivedSimple derived;
+  Simple        mySimple;
+  DerivedSimple derived;
 }

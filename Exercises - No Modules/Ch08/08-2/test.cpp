@@ -3,10 +3,11 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Person person{ "John", "Doe" };
-	println("{} {}", person.getFirstName(), person.getLastName());
+  Person person{ "John", "Doe" };
+  println ("{} {}", person.getFirstName (), person.getLastName ());
 
-	Person persons[3];
+  Person persons[3];
 }

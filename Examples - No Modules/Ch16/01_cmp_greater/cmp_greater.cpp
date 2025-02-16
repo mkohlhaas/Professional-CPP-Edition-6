@@ -3,8 +3,9 @@
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	println("{}", (-1 > 0u));            // true
-	println("{}", cmp_greater(-1, 0u));  // false
+  println ("{}", (-1 > 0u));            // true
+  println ("{}", cmp_greater (-1, 0u)); // false
 }

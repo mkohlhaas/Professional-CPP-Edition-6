@@ -2,8 +2,9 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	vector<int> intVector; // Creates a vector of ints with zero elements
-	println("Vector elements: {}", intVector);
+  vector<int> intVector; // Creates a vector of ints with zero elements
+  println ("Vector elements: {}", intVector);
 }

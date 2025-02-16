@@ -6,7 +6,8 @@ class Element
 {
 };
 
-int main()
+int
+main ()
 {
-	vector<Element> elementVector;
+  vector<Element> elementVector;
 }

@@ -1,6 +1,10 @@
-[[deprecated("Unsafe function, please use xyz")]] void func() {}
-
-int main()
+[[deprecated ("Unsafe function, please use xyz")]] void
+func ()
 {
-	func();
+}
+
+int
+main ()
+{
+  func ();
 }

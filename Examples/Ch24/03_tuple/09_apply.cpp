@@ -2,12 +2,14 @@ import std;
 
 using namespace std;
 
-int add(int a, int b)
+int
+add (int a, int b)
 {
-	return a + b;
+  return a + b;
 }
 
-int main()
+int
+main ()
 {
-	println("{}", apply(add, tuple{ 39, 3 }));
+  println ("{}", apply (add, tuple{ 39, 3 }));
 }

@@ -2,21 +2,20 @@ import std;
 
 using namespace std;
 
-template <int f>
-class Factorial
+template <int f> class Factorial
 {
 public:
-	static constexpr unsigned long long value{ f * Factorial<f - 1>::value };
+  static constexpr unsigned long long value{ f * Factorial<f - 1>::value };
 };
 
-template <>
-class Factorial<0>
+template <> class Factorial<0>
 {
 public:
-	static constexpr unsigned long long value{ 1 };
+  static constexpr unsigned long long value{ 1 };
 };
 
-int main()
+int
+main ()
 {
-	println("{}", Factorial<6>::value);
+  println ("{}", Factorial<6>::value);
 }

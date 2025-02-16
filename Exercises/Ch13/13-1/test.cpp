@@ -2,8 +2,9 @@ import person;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	Person person{ "John", "Doe" };
-	person.output();
+  Person person{ "John", "Doe" };
+  person.output ();
 }

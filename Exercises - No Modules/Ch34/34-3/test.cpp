@@ -1,6 +1,6 @@
 #include "reverseString.h"
-#include <print>
 #include <memory>
+#include <print>
 #include <string>
 
 using namespace std;
@@ -9,28 +9,26 @@ using namespace std;
 class ReverseString
 {
 public:
-	explicit ReverseString(const string& s)
-	{
-		unique_ptr<char[], decltype(&freeString)> reversedString{
-			reverseString(s.c_str()),
-			freeString };
-		m_reversedString = reversedString.get();
-	}
+  explicit ReverseString (const string &s)
+  {
+    unique_ptr<char[], decltype (&freeString)> reversedString{ reverseString (s.c_str ()), freeString };
+    m_reversedString = reversedString.get ();
+  }
 
-	const string& getReversedString() const
-	{
-		return m_reversedString;
-	}
+  const string &
+  getReversedString () const
+  {
+    return m_reversedString;
+  }
 
 private:
-	string m_reversedString;
+  string m_reversedString;
 };
 
-
-
-int main()
+int
+main ()
 {
-	ReverseString reverser{ "Hello World!" };
+  ReverseString reverser{ "Hello World!" };
 
-	println("{}", reverser.getReversedString());
+  println ("{}", reverser.getReversedString ());
 }

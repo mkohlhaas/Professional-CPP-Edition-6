@@ -3,11 +3,12 @@ import std;
 
 using namespace std;
 
-int main()
+int
+main ()
 {
-	SpreadsheetApplication app;
-	Spreadsheet s1 { 2, 3, app };
-	Spreadsheet s2 { 3, 4, app };
+  SpreadsheetApplication app;
+  Spreadsheet            s1{ 2, 3, app };
+  Spreadsheet            s2{ 3, 4, app };
 
-	println("Maximum height is: {}", Spreadsheet::MaxHeight);
+  println ("Maximum height is: {}", Spreadsheet::MaxHeight);
 }

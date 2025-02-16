@@ -4,122 +4,132 @@ import std;
 
 using namespace std;
 
-Spreadsheet::Spreadsheet(size_t width, size_t height)
-	: m_width { width }
-	, m_height { height }
+Spreadsheet::Spreadsheet (size_t width, size_t height) : m_width{ width }, m_height{ height }
 {
-	println("Normal constructor");
+  println ("Normal constructor");
 
-	m_cells = new SpreadsheetCell*[m_width];
-	for (size_t i{ 0 }; i < m_width; ++i) {
-		m_cells[i] = new SpreadsheetCell[m_height];
-	}
+  m_cells = new SpreadsheetCell *[m_width];
+  for (size_t i{ 0 }; i < m_width; ++i)
+    {
+      m_cells[i] = new SpreadsheetCell[m_height];
+    }
 }
 
-Spreadsheet::~Spreadsheet()
+Spreadsheet::~Spreadsheet () { cleanup (); }
+
+Spreadsheet::Spreadsheet (const Spreadsheet &src) : Spreadsheet{ src.m_width, src.m_height }
 {
-	cleanup();
+  println ("Copy constructor");
+
+  // The ctor-initializer of this constructor delegates first to the
+  // non-copy constructor to allocate the proper amount of memory.
+
+  // The next step is to copy the data.
+  for (size_t i{ 0 }; i < m_width; ++i)
+    {
+      for (size_t j{ 0 }; j < m_height; ++j)
+        {
+          m_cells[i][j] = src.m_cells[i][j];
+        }
+    }
 }
 
-Spreadsheet::Spreadsheet(const Spreadsheet& src)
-	: Spreadsheet { src.m_width, src.m_height }
+void
+Spreadsheet::cleanup () noexcept
 {
-	println("Copy constructor");
-
-	// The ctor-initializer of this constructor delegates first to the
-	// non-copy constructor to allocate the proper amount of memory.
-
-	// The next step is to copy the data.
-	for (size_t i{ 0 }; i < m_width; ++i) {
-		for (size_t j{ 0 }; j < m_height; ++j) {
-			m_cells[i][j] = src.m_cells[i][j];
-		}
-	}
+  for (size_t i{ 0 }; i < m_width; ++i)
+    {
+      delete[] m_cells[i];
+    }
+  delete[] m_cells;
+  m_cells = nullptr;
+  m_width = m_height = 0;
 }
 
-void Spreadsheet::cleanup() noexcept
+void
+Spreadsheet::verifyCoordinate (size_t x, size_t y) const
 {
-	for (size_t i{ 0 }; i < m_width; ++i) {
-		delete[] m_cells[i];
-	}
-	delete[] m_cells;
-	m_cells = nullptr;
-	m_width = m_height = 0;
+  if (x >= m_width)
+    {
+      throw out_of_range{ format ("x ({}) must be less than width ({}).", x, m_width) };
+    }
+  if (y >= m_height)
+    {
+      throw out_of_range{ format ("y ({}) must be less than height ({}).", y, m_height) };
+    }
 }
 
-void Spreadsheet::verifyCoordinate(size_t x, size_t y) const
+void
+Spreadsheet::setCellAt (size_t x, size_t y, const SpreadsheetCell &cell)
 {
-	if (x >= m_width) {
-		throw out_of_range { format("x ({}) must be less than width ({}).", x, m_width) };
-	}
-	if (y >= m_height) {
-		throw out_of_range { format("y ({}) must be less than height ({}).", y, m_height) };
-	}
+  verifyCoordinate (x, y);
+  m_cells[x][y] = cell;
 }
 
-void Spreadsheet::setCellAt(size_t x, size_t y, const SpreadsheetCell& cell)
+SpreadsheetCell &
+Spreadsheet::getCellAt (size_t x, size_t y)
 {
-	verifyCoordinate(x, y);
-	m_cells[x][y] = cell;
+  verifyCoordinate (x, y);
+  return m_cells[x][y];
 }
 
-SpreadsheetCell& Spreadsheet::getCellAt(size_t x, size_t y)
+void
+Spreadsheet::swap (Spreadsheet &other) noexcept
 {
-	verifyCoordinate(x, y);
-	return m_cells[x][y];
+  std::swap (m_width, other.m_width);
+  std::swap (m_height, other.m_height);
+  std::swap (m_cells, other.m_cells);
 }
 
-void Spreadsheet::swap(Spreadsheet& other) noexcept
+void
+swap (Spreadsheet &first, Spreadsheet &second) noexcept
 {
-	std::swap(m_width, other.m_width);
-	std::swap(m_height, other.m_height);
-	std::swap(m_cells, other.m_cells);
+  first.swap (second);
 }
 
-void swap(Spreadsheet& first, Spreadsheet& second) noexcept
+Spreadsheet &
+Spreadsheet::operator= (const Spreadsheet &rhs)
 {
-	first.swap(second);
+  println ("Copy assignment operator");
+
+  // Copy-and-swap idiom
+  Spreadsheet temp{ rhs }; // Do all the work in a temporary instance
+  swap (temp);             // Commit the work with only non-throwing operations
+  return *this;
 }
 
-Spreadsheet& Spreadsheet::operator=(const Spreadsheet& rhs)
+void
+Spreadsheet::moveFrom (Spreadsheet &src) noexcept
 {
-	println("Copy assignment operator");
-
-	// Copy-and-swap idiom
-	Spreadsheet temp { rhs }; // Do all the work in a temporary instance
-	swap(temp); // Commit the work with only non-throwing operations
-	return *this;
-}
-
-void Spreadsheet::moveFrom(Spreadsheet& src) noexcept
-{
-	m_width = exchange(src.m_width, 0);
-	m_height = exchange(src.m_height, 0);
-	m_cells = exchange(src.m_cells, nullptr);
+  m_width  = exchange (src.m_width, 0);
+  m_height = exchange (src.m_height, 0);
+  m_cells  = exchange (src.m_cells, nullptr);
 }
 
 // Move constructor
-Spreadsheet::Spreadsheet(Spreadsheet&& src) noexcept
+Spreadsheet::Spreadsheet (Spreadsheet &&src) noexcept
 {
-	println("Move constructor");
+  println ("Move constructor");
 
-	moveFrom(src);
+  moveFrom (src);
 }
 
 // Move assignment operator
-Spreadsheet& Spreadsheet::operator=(Spreadsheet&& rhs) noexcept
+Spreadsheet &
+Spreadsheet::operator= (Spreadsheet &&rhs) noexcept
 {
-	println("Move assignment operator");
+  println ("Move assignment operator");
 
-	// check for self-assignment
-	if (this == &rhs) {
-		return *this;
-	}
+  // check for self-assignment
+  if (this == &rhs)
+    {
+      return *this;
+    }
 
-	// free the old memory
-	cleanup();
+  // free the old memory
+  cleanup ();
 
-	moveFrom(rhs);
+  moveFrom (rhs);
 
-	return *this;
+  return *this;
 }

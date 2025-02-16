@@ -1,19 +1,21 @@
+#include <locale>
 #include <print>
 #include <sstream>
-#include <locale>
 
 using namespace std;
 
-void print()
+void
+print ()
 {
-	stringstream stream;
-	stream << 32767;
-	println("{}", stream.str());
+  stringstream stream;
+  stream << 32767;
+  println ("{}", stream.str ());
 }
 
-int main()
+int
+main ()
 {
-	print();
-	locale::global(locale{ "en-US" }); // "en_US" for POSIX
-	print();
+  print ();
+  locale::global (locale{ "en-US" }); // "en_US" for POSIX
+  print ();
 }

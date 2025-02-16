@@ -1,7 +1,8 @@
 #include "hr.h"
 
-int main()
+int
+main ()
 {
-	HR::Person person{ "Otis", "Lowe" };
-	HR::Employee employee{ 123, "Otis", "Lowe" };
+  HR::Person   person{ "Otis", "Lowe" };
+  HR::Employee employee{ 123, "Otis", "Lowe" };
 }

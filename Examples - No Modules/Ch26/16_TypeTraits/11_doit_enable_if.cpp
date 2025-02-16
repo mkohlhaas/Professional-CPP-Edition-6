@@ -6,30 +6,35 @@ using namespace std;
 class IsDoable
 {
 public:
-	virtual void doit() const { println("IsDoable::doit()"); }
+  virtual void
+  doit () const
+  {
+    println ("IsDoable::doit()");
+  }
 };
 
 class Derived : public IsDoable
 {
 };
 
-template<typename T>
+template <typename T>
 enable_if_t<is_base_of_v<IsDoable, T>, void>
-	callDoit(const T& t)
+callDoit (const T &t)
 {
-	t.doit();
+  t.doit ();
 }
 
-template<typename T>
+template <typename T>
 enable_if_t<!is_base_of_v<IsDoable, T>, void>
-	callDoit(const T&)
+callDoit (const T &)
 {
-	println("Cannot call doit()!");
+  println ("Cannot call doit()!");
 }
 
-int main()
+int
+main ()
 {
-	Derived d;
-	callDoit(d);
-	callDoit(123);
+  Derived d;
+  callDoit (d);
+  callDoit (123);
 }
