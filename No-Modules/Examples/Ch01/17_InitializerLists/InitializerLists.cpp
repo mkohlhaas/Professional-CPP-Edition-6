@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// initializer_list is like a literal array?
+
 int
 sum (initializer_list<int> values)
 {

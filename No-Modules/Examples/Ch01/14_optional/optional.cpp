@@ -17,8 +17,15 @@ getData (bool giveIt)
 int
 main ()
 {
-  optional<int> data1{ getData (true) };
-  optional<int> data2{ getData (false) };
+  // optional<int> data1{ getData (true) };
+  // optional<int> data2{ getData (false) };
+  optional data0{ 42 };
+  optional data1{ getData (true) };
+  optional data2{ getData (false) };
+
+  println ("data3.has_value = {}", data0.has_value ());
+  println ("data3.value = {}", data0.value ());
+  println ("data3.value = {}", *data0);
 
   println ("data1.has_value = {}", data1.has_value ());
   if (!data2)
