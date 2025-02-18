@@ -19,13 +19,13 @@ AirlineTicket::calculatePriceInDollars ()
 {
   if (hasEliteSuperRewardsStatus ())
     {
-      // Elite Super Rewards customers fly for free!
       return 0;
     }
+  else
+    {
 
-  // The cost of the ticket is the number of miles times 0.1.
-  // Real airlines probably have a more complicated formula!
-  return getNumberOfMiles () * 0.1;
+      return getNumberOfMiles () * 0.1;
+    }
 }
 
 string

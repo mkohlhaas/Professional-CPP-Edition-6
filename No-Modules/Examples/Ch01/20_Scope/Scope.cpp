@@ -31,8 +31,8 @@ int
 main ()
 {
   Demo d;
-  println ("{}", d.get ());   // prints 5
-  println ("{}", NS::get ()); // prints 20
-  println ("{}", ::get ());   // prints 10
-  println ("{}", get ());     // prints 10
+  println ("class:            {}", d.get ());   // 5
+  println ("namespace:        {}", NS::get ()); // 20
+  println ("global namespace: {}", ::get ());   // 10
+  println ("global namespace: {}", get ());     // 10
 }

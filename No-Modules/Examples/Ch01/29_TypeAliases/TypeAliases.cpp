@@ -5,19 +5,17 @@ using namespace std;
 
 // void processVector(const vector<basic_string<char>>& vec)
 //{
-//	// Body omitted
+//	// ...
 // }
 
-void
-processVector (const vector<string> &vec)
-{
-  // Body omitted
+// in stringfwd.h:
+// typedef basic_string<char> string;
+void processVector(const vector<string> &vec [[maybe_unused]]) {
+  // ...
 }
 
-int
-main ()
-{
+int main() {
   // vector<basic_string<char>> myVector;
   vector<string> myVector;
-  processVector (myVector);
+  processVector(myVector);
 }

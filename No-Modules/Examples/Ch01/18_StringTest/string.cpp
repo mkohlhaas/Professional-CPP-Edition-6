@@ -7,6 +7,6 @@ int
 main ()
 {
   string myString{ "Hello, World" };
-  println ("The value of myString is {}", myString);
-  println ("The second letter is {}", myString[1]);
+  println ("The value of myString: {}", myString);
+  println ("The second letter: {}", myString[1]);
 }
