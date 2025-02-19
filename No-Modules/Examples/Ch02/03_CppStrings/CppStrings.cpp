@@ -17,7 +17,7 @@ main ()
     println ("{}", a);
   }
 
-  println ("");
+  println ();
 
   {
     string a{ "Hello" };
@@ -26,7 +26,7 @@ main ()
     println ("'{}' > '{}' = {}", a, b, a > b);
   }
 
-  println ("");
+  println ();
 
   {
     string a{ "12" };
@@ -47,13 +47,13 @@ main ()
       }
   }
 
-  println ("");
+  println ();
 
   {
     // C++20 three-way comparison operator
     string a{ "12" };
     string b{ "34" };
-    auto   result{ a <= > b };
+    auto   result{ a <=> b };
     if (is_gt (result))
       {
         println ("greater");
@@ -68,7 +68,7 @@ main ()
       }
   }
 
-  println ("");
+  println ();
 
   {
     string myString{ "hello" };
@@ -86,7 +86,7 @@ main ()
     println ("{}", myOtherString);
   }
 
-  println ("");
+  println ();
 
   {
     string strHello{ "Hello!!" };
@@ -106,11 +106,14 @@ main ()
     println ("{}", strWorld.contains ("Hello")); // false
   }
 
-  println ("");
+  println ();
 
   {
     auto  string1{ "Hello World" };   // string1 is a const char*.
-    auto &string2{ "Hello World" };   // string2 is a const char[12].
-    auto  string3{ "Hello World" s }; // string3 is an std::string.
+    auto &string2{ "Hello World" };   // string2 is a const char&[12].
+    auto  string3{ "Hello World"s };  // string3 is an std::string.
+    println("{}", string1);
+    println("{}", string2);
+    println("{}", string3);
   }
 }

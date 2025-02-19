@@ -49,6 +49,7 @@ main ()
 
   {
     // Using the standard user-defined literal sv.
-    auto sv{ "My string_view" sv };
+    auto sv{ "My string_view"sv };
+    println("{}", sv);
   }
 }
