@@ -3,40 +3,49 @@
 
 using namespace std;
 
-class Simple
-{
+class Simple {
 public:
-  Simple () { println ("Simple constructor called!"); }
-  ~Simple () { println ("Simple destructor called!"); }
+  Simple() { println("Simple CON-structor called!"); }
+  ~Simple() { println("Simple DE-structor called!"); }
 };
 
-int
-main ()
-{
-  Simple *mySimpleArray{ new Simple[4] };
-  // Use mySimpleArray...
-  delete[] mySimpleArray;
-  mySimpleArray = nullptr;
+int main() {
+  {
+    // Constructor will be called 4 times.
+    Simple *mySimpleArray{new Simple[4]};
 
-  const size_t size{ 4 };
-  Simple     **mySimplePtrArray{ new Simple *[size] };
+    // use mySimpleArray
+    // ...
 
-  // Allocate an object for each pointer.
-  for (size_t i{ 0 }; i < size; ++i)
-    {
+    // Destructor will be called 4 times.
+    delete[] mySimpleArray;
+    mySimpleArray = nullptr;
+  }
+
+  println();
+
+  {
+    const size_t size{4};
+    Simple **mySimplePtrArray{new Simple *[size]};
+
+    // Allocate an object for each pointer.
+    // Constructor will be called 4 times.
+    for (size_t i{0}; i < size; ++i) {
       mySimplePtrArray[i] = new Simple{};
     }
 
-  // Use mySimplePtrArray ...
+    // use mySimplePtrArray ...
+    // ...
 
-  // Delete each allocated object.
-  for (size_t i{ 0 }; i < size; ++i)
-    {
+    // Delete each allocated object.
+    // Destructor will be called 4 times.
+    for (size_t i{0}; i < size; ++i) {
       delete mySimplePtrArray[i];
       mySimplePtrArray[i] = nullptr;
     }
 
-  // Delete the array itself.
-  delete[] mySimplePtrArray;
-  mySimplePtrArray = nullptr;
+    // Delete the array itself.
+    delete[] mySimplePtrArray;
+    mySimplePtrArray = nullptr;
+  }
 }
