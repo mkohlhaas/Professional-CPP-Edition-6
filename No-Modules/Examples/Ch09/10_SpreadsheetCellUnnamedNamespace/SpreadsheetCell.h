@@ -5,17 +5,17 @@
 
 class SpreadsheetCell
 {
-public:
-	SpreadsheetCell() = default;
-	SpreadsheetCell(double initialValue);
-	SpreadsheetCell(std::string_view initialValue);
-	
-	void setValue(double value);
-	double getValue() const;
+  public:
+    SpreadsheetCell() = default;
+    SpreadsheetCell(double initialValue);
+    SpreadsheetCell(std::string_view initialValue);
 
-	void setString(std::string_view value);
-	std::string getString() const;
+    void   setValue(double value);
+    double getValue() const;
 
-private:
-	double m_value{ 0 };
+    void        setString(std::string_view value);
+    std::string getString() const;
+
+  private:
+    double m_value{0};
 };

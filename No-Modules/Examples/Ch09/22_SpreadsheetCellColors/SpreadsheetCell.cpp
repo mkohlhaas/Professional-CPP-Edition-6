@@ -3,56 +3,52 @@
 
 using namespace std;
 
-SpreadsheetCell::SpreadsheetCell (double initialValue) : m_value{ initialValue } {}
-
-SpreadsheetCell::SpreadsheetCell (string_view initialValue) : m_value{ stringToDouble (initialValue) } {}
-
-void
-SpreadsheetCell::set (double value)
+SpreadsheetCell::SpreadsheetCell(double initialValue) : m_value{initialValue}
 {
-  m_value = value;
 }
 
-double
-SpreadsheetCell::getValue () const
+SpreadsheetCell::SpreadsheetCell(string_view initialValue) : m_value{stringToDouble(initialValue)}
 {
-  return m_value;
 }
 
-void
-SpreadsheetCell::set (string_view value)
+void SpreadsheetCell::set(double value)
 {
-  m_value = stringToDouble (value);
+    m_value = value;
 }
 
-string
-SpreadsheetCell::getString () const
+double SpreadsheetCell::getValue() const
 {
-  return doubleToString (m_value);
+    return m_value;
 }
 
-string
-SpreadsheetCell::doubleToString (double value)
+void SpreadsheetCell::set(string_view value)
 {
-  return to_string (value);
+    m_value = stringToDouble(value);
 }
 
-double
-SpreadsheetCell::stringToDouble (string_view value)
+string SpreadsheetCell::getString() const
 {
-  double number{ 0 };
-  from_chars (value.data (), value.data () + value.size (), number);
-  return number;
+    return doubleToString(m_value);
 }
 
-void
-SpreadsheetCell::setColor (Color color)
+string SpreadsheetCell::doubleToString(double value)
 {
-  m_color = color;
+    return to_string(value);
 }
 
-SpreadsheetCell::Color
-SpreadsheetCell::getColor () const
+double SpreadsheetCell::stringToDouble(string_view value)
 {
-  return m_color;
+    double number{0};
+    from_chars(value.data(), value.data() + value.size(), number);
+    return number;
+}
+
+void SpreadsheetCell::setColor(Color color)
+{
+    m_color = color;
+}
+
+SpreadsheetCell::Color SpreadsheetCell::getColor() const
+{
+    return m_color;
 }
