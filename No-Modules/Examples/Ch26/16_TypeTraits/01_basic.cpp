@@ -3,43 +3,42 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  if (is_integral<int>::value)
+    if (is_integral<int>::value)
     {
-      println ("int is integral");
+        println("int is integral");
     }
-  else
+    else
     {
-      println ("int is not integral");
-    }
-
-  if (is_class<string>::value)
-    {
-      println ("string is a class");
-    }
-  else
-    {
-      println ("string is not a class");
+        println("int is not integral");
     }
 
-  // Using _v helpers.
-  if (is_integral_v<int>)
+    if (is_class<string>::value)
     {
-      println ("int is integral");
+        println("string is a class");
     }
-  else
+    else
     {
-      println ("int is not integral");
+        println("string is not a class");
     }
 
-  if (is_class_v<string>)
+    // Using _v helpers.
+    if (is_integral_v<int>)
     {
-      println ("string is a class");
+        println("int is integral");
     }
-  else
+    else
     {
-      println ("string is not a class");
+        println("int is not integral");
+    }
+
+    if (is_class_v<string>)
+    {
+        println("string is a class");
+    }
+    else
+    {
+        println("string is not a class");
     }
 }

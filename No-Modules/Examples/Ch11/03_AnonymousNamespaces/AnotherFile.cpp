@@ -2,11 +2,10 @@
 
 namespace
 {
-void f ();
+void f();
 
-void
-f ()
+void f()
 {
-  std::println ("f");
+    std::println("f");
 }
-}
+} // namespace

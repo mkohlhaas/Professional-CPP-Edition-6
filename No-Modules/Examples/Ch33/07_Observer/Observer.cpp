@@ -8,125 +8,116 @@ using EventHandle = unsigned int;
 
 template <typename... Args> class Event final
 {
-public:
-  // Adds an observer. Returns an EventHandle to unregister the observer.
-  [[nodiscard]] EventHandle
-  addObserver (function<void (const Args &...)> observer)
-  {
-    auto number{ ++m_counter };
-    m_observers[number] = move (observer);
-    return number;
-  }
+  public:
+    // Adds an observer. Returns an EventHandle to unregister the observer.
+    [[nodiscard]] EventHandle addObserver(function<void(const Args &...)> observer)
+    {
+        auto number{++m_counter};
+        m_observers[number] = move(observer);
+        return number;
+    }
 
-  // Unregisters the observer pointed to by the given handle.
-  void
-  removeObserver (EventHandle handle)
-  {
-    m_observers.erase (handle);
-  }
+    // Unregisters the observer pointed to by the given handle.
+    void removeObserver(EventHandle handle)
+    {
+        m_observers.erase(handle);
+    }
 
-  // Raise event: notifies all registered observers.
-  void
-  raise (const Args &...args)
-  {
-    for (const auto &[_, callback] : m_observers)
-      {
-        callback (args...);
-      }
-  }
+    // Raise event: notifies all registered observers.
+    void raise(const Args &...args)
+    {
+        for (const auto &[_, callback] : m_observers)
+        {
+            callback(args...);
+        }
+    }
 
-private:
-  unsigned int                                        m_counter{ 0 };
-  map<EventHandle, function<void (const Args &...)> > m_observers;
+  private:
+    unsigned int                                      m_counter{0};
+    map<EventHandle, function<void(const Args &...)>> m_observers;
 };
 
 class ObservableSubject
 {
-public:
-  EventHandle
-  registerDataModifiedObserver (const auto &observer)
-  {
-    return m_eventDataModified.addObserver (observer);
-  }
-  void
-  unregisterDataModifiedObserver (EventHandle handle)
-  {
-    m_eventDataModified.removeObserver (handle);
-  }
+  public:
+    EventHandle registerDataModifiedObserver(const auto &observer)
+    {
+        return m_eventDataModified.addObserver(observer);
+    }
+    void unregisterDataModifiedObserver(EventHandle handle)
+    {
+        m_eventDataModified.removeObserver(handle);
+    }
 
-  EventHandle
-  registerDataDeletedObserver (const auto &observer)
-  {
-    return m_eventDataDeleted.addObserver (observer);
-  }
-  void
-  unregisterDataDeletedObserver (EventHandle handle)
-  {
-    m_eventDataDeleted.removeObserver (handle);
-  }
+    EventHandle registerDataDeletedObserver(const auto &observer)
+    {
+        return m_eventDataDeleted.addObserver(observer);
+    }
+    void unregisterDataDeletedObserver(EventHandle handle)
+    {
+        m_eventDataDeleted.removeObserver(handle);
+    }
 
-  void
-  modifyData ()
-  {
-    // ...
-    m_eventDataModified.raise (1, 2.3);
-  }
+    void modifyData()
+    {
+        // ...
+        m_eventDataModified.raise(1, 2.3);
+    }
 
-  void
-  deleteData ()
-  {
-    // ...
-    m_eventDataDeleted.raise ();
-  }
+    void deleteData()
+    {
+        // ...
+        m_eventDataDeleted.raise();
+    }
 
-private:
-  Event<int, double> m_eventDataModified;
-  Event<>            m_eventDataDeleted;
+  private:
+    Event<int, double> m_eventDataModified;
+    Event<>            m_eventDataDeleted;
 };
 
-void
-modified (int a, double b)
+void modified(int a, double b)
 {
-  println ("modified({}, {})", a, b);
+    println("modified({}, {})", a, b);
 }
 
 class Observer final
 {
-public:
-  explicit Observer (ObservableSubject &subject) : m_subject{ subject }
-  {
-    m_subjectModifiedHandle
-        = m_subject.registerDataModifiedObserver ([this] (int i, double d) { onSubjectModified (i, d); });
-  }
+  public:
+    explicit Observer(ObservableSubject &subject) : m_subject{subject}
+    {
+        m_subjectModifiedHandle =
+            m_subject.registerDataModifiedObserver([this](int i, double d) { onSubjectModified(i, d); });
+    }
 
-  ~Observer () { m_subject.unregisterDataModifiedObserver (m_subjectModifiedHandle); }
+    ~Observer()
+    {
+        m_subject.unregisterDataModifiedObserver(m_subjectModifiedHandle);
+    }
 
-private:
-  void
-  onSubjectModified (int a, double b)
-  {
-    println ("Observer::onSubjectModified({}, {})", a, b);
-  }
+  private:
+    void onSubjectModified(int a, double b)
+    {
+        println("Observer::onSubjectModified({}, {})", a, b);
+    }
 
-  ObservableSubject &m_subject;
-  EventHandle        m_subjectModifiedHandle;
+    ObservableSubject &m_subject;
+    EventHandle        m_subjectModifiedHandle;
 };
 
-int
-main ()
+int main()
 {
-  ObservableSubject subject;
+    ObservableSubject subject;
 
-  auto     handleModified{ subject.registerDataModifiedObserver (modified) };
-  auto     handleDeleted{ subject.registerDataDeletedObserver ([] { println ("deleted"); }) };
-  Observer observer{ subject };
+    auto     handleModified{subject.registerDataModifiedObserver(modified)};
+    auto     handleDeleted{subject.registerDataDeletedObserver([] { println("deleted"); })};
+    Observer observer{subject};
 
-  subject.modifyData ();
-  subject.deleteData ();
+    subject.modifyData();
+    subject.deleteData();
 
-  println ("");
+    println("");
 
-  subject.unregisterDataModifiedObserver (handleModified);
-  subject.modifyData ();
-  subject.deleteData ();
+    subject.unregisterDataModifiedObserver(handleModified);
+    subject.modifyData();
+    subject.deleteData();
 }

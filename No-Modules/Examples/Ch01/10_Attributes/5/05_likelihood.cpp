@@ -2,29 +2,28 @@
 
 using std::println;
 
-int
-main ()
+int main()
 {
-  int value{ 1 };
-  if (value > 11) [[unlikely]]
+    int value{1};
+    if (value > 11) [[unlikely]]
     {
-      println ("if: unlikely");
+        println("if: unlikely");
     }
-  else
+    else
     {
-      println ("if: likely");
+        println("if: likely");
     }
 
-  switch (value)
+    switch (value)
     {
     [[likely]] case 1:
-      println ("switch: likely");
-      break;
+        println("switch: likely");
+        break;
     case 2:
-      println ("switch: whatever");
-      break;
+        println("switch: whatever");
+        break;
     [[unlikely]] case 12:
-      println ("switch: unlikely");
-      break;
+        println("switch: unlikely");
+        break;
     }
 }

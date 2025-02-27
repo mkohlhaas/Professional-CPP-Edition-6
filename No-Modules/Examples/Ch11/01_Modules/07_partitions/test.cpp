@@ -1,7 +1,6 @@
 import datamodel;
 
-int
-main ()
+int main()
 {
-  DataModel::Address a;
+    DataModel::Address a;
 }

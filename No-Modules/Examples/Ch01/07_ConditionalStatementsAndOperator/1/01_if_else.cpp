@@ -2,21 +2,20 @@
 
 using std::println;
 
-int
-main ()
+int main()
 {
-  int i{ 3 };
+    int i{3};
 
-  if (i > 4)
+    if (i > 4)
     {
-      println ("Greater than 4.");
+        println("Greater than 4.");
     }
-  else if (i > 2)
+    else if (i > 2)
     {
-      println ("Greater than 2.");
+        println("Greater than 2.");
     }
-  else
+    else
     {
-      println ("Whatever.");
+        println("Whatever.");
     }
 }

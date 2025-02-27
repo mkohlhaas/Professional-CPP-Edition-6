@@ -1,8 +1,7 @@
 #include "LoggerAdapter.h"
 
-int
-main ()
+int main()
 {
-  AdaptedLogger logger;
-  logger.log ("Testing the logger.");
+    AdaptedLogger logger;
+    logger.log("Testing the logger.");
 }

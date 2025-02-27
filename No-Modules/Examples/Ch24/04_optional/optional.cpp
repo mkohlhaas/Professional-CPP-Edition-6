@@ -5,35 +5,33 @@
 
 using namespace std;
 
-optional<int>
-Parse (const string &str)
+optional<int> Parse(const string &str)
 {
-  try
+    try
     {
-      return stoi (str);
+        return stoi(str);
     }
-  catch (...)
+    catch (...)
     {
-      return {};
+        return {};
     }
 }
 
-int
-main ()
+int main()
 {
-  while (true)
+    while (true)
     {
-      print ("Enter an integer (q to stop): ");
-      string str;
-      if (!getline (cin, str) || str == "q")
+        print("Enter an integer (q to stop): ");
+        string str;
+        if (!getline(cin, str) || str == "q")
         {
-          break;
+            break;
         }
 
-      auto result{ Parse (str)
-                       .and_then ([] (int value) -> optional<int> { return value * 2; })
-                       .transform ([] (int value) { return to_string (value); })
-                       .or_else ([] { return optional<string>{ "No Integer" }; }) };
-      println ("    > Result: {}", *result);
+        auto result{Parse(str)
+                        .and_then([](int value) -> optional<int> { return value * 2; })
+                        .transform([](int value) { return to_string(value); })
+                        .or_else([] { return optional<string>{"No Integer"}; })};
+        println("    > Result: {}", *result);
     }
 }

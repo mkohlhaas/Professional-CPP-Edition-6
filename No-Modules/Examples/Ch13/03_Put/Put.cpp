@@ -2,8 +2,7 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  cout.put ('a');
+    cout.put('a');
 }

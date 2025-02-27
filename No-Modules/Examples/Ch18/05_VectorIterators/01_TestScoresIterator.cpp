@@ -5,46 +5,45 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  vector<double> doubleVector;
+    vector<double> doubleVector;
 
-  // Initialize max to smallest number.
-  double max{ -numeric_limits<double>::infinity () };
+    // Initialize max to smallest number.
+    double max{-numeric_limits<double>::infinity()};
 
-  for (size_t i{ 1 }; true; ++i)
+    for (size_t i{1}; true; ++i)
     {
-      double value;
-      print ("Enter score {} (-1 to stop): ", i);
-      cin >> value;
-      if (value == -1)
+        double value;
+        print("Enter score {} (-1 to stop): ", i);
+        cin >> value;
+        if (value == -1)
         {
-          break;
+            break;
         }
-      doubleVector.push_back (value);
-      if (value > max)
+        doubleVector.push_back(value);
+        if (value > max)
         {
-          max = value;
+            max = value;
         }
     }
 
-  max /= 100.0;
+    max /= 100.0;
 
-  for (vector<double>::iterator iter{ begin (doubleVector) }; iter != end (doubleVector); ++iter)
+    for (vector<double>::iterator iter{begin(doubleVector)}; iter != end(doubleVector); ++iter)
     {
-      *iter /= max;
-      print ("{} ", *iter);
+        *iter /= max;
+        print("{} ", *iter);
     }
-  println ("");
+    println("");
 
-  /*
-          // Using auto keyword
-          for (auto iter{ begin(doubleVector) };
-                  iter != end(doubleVector); ++iter) {
-                  *iter /= max;
-                  print("{} ", *iter);
-          }
-          println("");
-  */
+    /*
+            // Using auto keyword
+            for (auto iter{ begin(doubleVector) };
+                    iter != end(doubleVector); ++iter) {
+                    *iter /= max;
+                    print("{} ", *iter);
+            }
+            println("");
+    */
 }

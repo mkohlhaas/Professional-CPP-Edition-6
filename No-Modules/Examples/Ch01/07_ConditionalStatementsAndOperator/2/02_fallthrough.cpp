@@ -2,31 +2,30 @@
 
 using std::println;
 
-int
-main ()
+int main()
 {
-  enum class Mode
-  {
-    Default,
-    Custom,
-    Standard
-  };
-
-  int  value{ 42 };
-  Mode mode{ Mode::Standard };
-
-  switch (mode)
+    enum class Mode
     {
-      using enum Mode;
+        Default,
+        Custom,
+        Standard
+    };
+
+    int  value{42};
+    Mode mode{Mode::Standard};
+
+    switch (mode)
+    {
+        using enum Mode;
 
     case Custom:
-      value = 84;
-      [[fallthrough]];
+        value = 84;
+        [[fallthrough]];
     case Standard:
     case Default:
-      value = 21;
-      println ("value: {}", value);
-      break;
+        value = 21;
+        println("value: {}", value);
+        break;
     }
-  println ("value: {}", value);
+    println("value: {}", value);
 }

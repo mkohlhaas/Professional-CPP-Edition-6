@@ -4,26 +4,24 @@
 
 using namespace std;
 
-void
-throwIf (bool should)
+void throwIf(bool should)
 {
-  if (should)
+    if (should)
     {
-      throw runtime_error{ "Here's my exception" };
+        throw runtime_error{"Here's my exception"};
     }
 }
 
-int
-main ()
+int main()
 {
-  try
+    try
     {
-      throwIf (false); // Doesn't throw.
-      throwIf (true);  // Throws.
+        throwIf(false); // Doesn't throw.
+        throwIf(true);  // Throws.
     }
-  catch (const runtime_error &e)
+    catch (const runtime_error &e)
     {
-      println (cerr, "Caught exception: {}", e.what ());
-      return 1;
+        println(cerr, "Caught exception: {}", e.what());
+        return 1;
     }
 }

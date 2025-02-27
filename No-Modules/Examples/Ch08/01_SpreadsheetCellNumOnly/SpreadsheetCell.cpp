@@ -1,13 +1,11 @@
 #include "SpreadsheetCell.h"
 
-void
-SpreadsheetCell::setValue (double value)
+void SpreadsheetCell::setValue(double value)
 {
-  m_value = value;
+    m_value = value;
 }
 
-double
-SpreadsheetCell::getValue () const
+double SpreadsheetCell::getValue() const
 {
-  return m_value;
+    return m_value;
 }

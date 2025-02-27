@@ -1,18 +1,16 @@
 #include <string>
 
-const std::string message{ "Test" };
+const std::string message{"Test"};
 
-const std::string &
-getString ()
+const std::string &getString()
 {
-  return message;
+    return message;
 }
 
-int
-main ()
+int main()
 {
-  auto        s1{ getString () };
-  const auto &s2{ getString () };
-  decltype (getString ()) s3{ getString () };
-  decltype (auto) s4{ getString () };
+    auto                  s1{getString()};
+    const auto           &s2{getString()};
+    decltype(getString()) s3{getString()};
+    decltype(auto)        s4{getString()};
 }

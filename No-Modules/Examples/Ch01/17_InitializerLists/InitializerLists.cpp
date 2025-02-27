@@ -5,25 +5,23 @@ using namespace std;
 
 // initializer_list is like a literal array?
 
-int
-sum (initializer_list<int> values)
+int sum(initializer_list<int> values)
 {
-  int total{ 0 };
-  for (int value : values)
+    int total{0};
+    for (int value : values)
     {
-      total += value;
+        total += value;
     }
-  return total;
+    return total;
 }
 
-int
-main ()
+int main()
 {
-  int a{ sum ({ 1, 2, 3 }) };
-  int b{ sum ({ 10, 20, 30, 40, 50, 60 }) };
+    int a{sum({1, 2, 3})};
+    int b{sum({10, 20, 30, 40, 50, 60})};
 
-  println ("{}", a);
-  println ("{}", b);
+    println("{}", a);
+    println("{}", b);
 
-  // int c{ sum({ 1, 2, 3.0 }) }; // Error
+    // int c{ sum({ 1, 2, 3.0 }) }; // Error
 }

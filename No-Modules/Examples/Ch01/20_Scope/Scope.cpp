@@ -4,35 +4,31 @@ using namespace std;
 
 class Demo
 {
-public:
-  int
-  get ()
-  {
-    return 5;
-  }
+  public:
+    int get()
+    {
+        return 5;
+    }
 };
 
-int
-get ()
+int get()
 {
-  return 10;
+    return 10;
 }
 
 namespace NS
 {
-int
-get ()
+int get()
 {
-  return 20;
+    return 20;
 }
-}
+} // namespace NS
 
-int
-main ()
+int main()
 {
-  Demo d;
-  println ("class:            {}", d.get ());   // 5
-  println ("namespace:        {}", NS::get ()); // 20
-  println ("global namespace: {}", ::get ());   // 10
-  println ("global namespace: {}", get ());     // 10
+    Demo d;
+    println("class:            {}", d.get());   // 5
+    println("namespace:        {}", NS::get()); // 20
+    println("global namespace: {}", ::get());   // 10
+    println("global namespace: {}", get());     // 10
 }

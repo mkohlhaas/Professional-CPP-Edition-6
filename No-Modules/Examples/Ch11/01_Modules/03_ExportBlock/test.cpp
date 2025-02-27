@@ -1,9 +1,8 @@
 import datamodel;
 
-int
-main ()
+int main()
 {
-  DataModel::Person  p;
-  DataModel::Address a;
-  DataModel::Persons persons;
+    DataModel::Person  p;
+    DataModel::Address a;
+    DataModel::Persons persons;
 }

@@ -3,21 +3,20 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  int             i{ 11 };
-  strong_ordering result{ i <=> 0 };
-  if (is_lt (result))
+    int             i{11};
+    strong_ordering result{i <=> 0};
+    if (is_lt(result))
     {
-      println ("less");
+        println("less");
     }
-  if (is_gt (result))
+    if (is_gt(result))
     {
-      println ("greater");
+        println("greater");
     }
-  if (is_eq (result))
+    if (is_eq(result))
     {
-      println ("equal");
+        println("equal");
     }
 }

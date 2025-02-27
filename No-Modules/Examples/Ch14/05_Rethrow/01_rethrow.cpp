@@ -3,35 +3,32 @@
 
 using namespace std;
 
-void
-g ()
+void g()
 {
-  throw invalid_argument{ "Some exception" };
+    throw invalid_argument{"Some exception"};
 }
 
-void
-f ()
+void f()
 {
-  try
+    try
     {
-      g ();
+        g();
     }
-  catch (const invalid_argument &e)
+    catch (const invalid_argument &e)
     {
-      println ("caught in f(): {}", e.what ());
-      throw; // rethrow
+        println("caught in f(): {}", e.what());
+        throw; // rethrow
     }
 }
 
-int
-main ()
+int main()
 {
-  try
+    try
     {
-      f ();
+        f();
     }
-  catch (const invalid_argument &e)
+    catch (const invalid_argument &e)
     {
-      println ("caught in main(): {}", e.what ());
+        println("caught in main(): {}", e.what());
     }
 }

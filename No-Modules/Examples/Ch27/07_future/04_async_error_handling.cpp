@@ -4,28 +4,26 @@
 
 using namespace std;
 
-int
-calculate ()
+int calculate()
 {
-  throw runtime_error{ "Exception thrown from calculate()." };
+    throw runtime_error{"Exception thrown from calculate()."};
 }
 
-int
-main ()
+int main()
 {
-  // Use the launch::async policy to force asynchronous execution.
-  auto myFuture{ async (launch::async, calculate) };
+    // Use the launch::async policy to force asynchronous execution.
+    auto myFuture{async(launch::async, calculate)};
 
-  // Do some more work...
+    // Do some more work...
 
-  // Get the result.
-  try
+    // Get the result.
+    try
     {
-      int result{ myFuture.get () };
-      println ("Result: {}", result);
+        int result{myFuture.get()};
+        println("Result: {}", result);
     }
-  catch (const exception &ex)
+    catch (const exception &ex)
     {
-      println ("Caught exception: {}", ex.what ());
+        println("Caught exception: {}", ex.what());
     }
 }

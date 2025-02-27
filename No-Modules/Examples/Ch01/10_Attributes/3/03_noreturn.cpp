@@ -4,42 +4,38 @@
 using namespace std;
 
 [[noreturn]]
-void
-forceProgramTermination ()
+void forceProgramTermination()
 {
-  println ("exiting...");
-  exit (EXIT_FAILURE);
+    println("exiting...");
+    exit(EXIT_FAILURE);
 }
 
-bool
-isDongleAvailable ()
+bool isDongleAvailable()
 {
-  // bool isAvailable{ false };
-  bool isAvailable{ true };
-  // Check whether a licensing dongle is available
-  // ...
-  return isAvailable;
+    // bool isAvailable{ false };
+    bool isAvailable{true};
+    // Check whether a licensing dongle is available
+    // ...
+    return isAvailable;
 }
 
-bool
-isFeatureLicensed (int featureId)
+bool isFeatureLicensed(int featureId)
 {
-  if (!isDongleAvailable ())
+    if (!isDongleAvailable())
     {
-      // No licensing dongle found, abort program execution!
-      forceProgramTermination ();
+        // No licensing dongle found, abort program execution!
+        forceProgramTermination();
     }
-  else
+    else
     {
-      // Dongle available, perform license check of the given feature...
-      bool isLicensed{ featureId == 42 };
-      return isLicensed;
+        // Dongle available, perform license check of the given feature...
+        bool isLicensed{featureId == 42};
+        return isLicensed;
     }
 }
 
-int
-main ()
+int main()
 {
-  bool isLicensed{ isFeatureLicensed (42) };
-  println ("is licensed: {}", isLicensed);
+    bool isLicensed{isFeatureLicensed(42)};
+    println("is licensed: {}", isLicensed);
 }

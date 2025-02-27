@@ -5,55 +5,53 @@
 
 using namespace std;
 
-void
-getReservationData ()
+void getReservationData()
 {
-  print ("Name and number of guests: ");
-  string guestName;
-  int    partySize{ 0 };
-  // Read characters until we find a digit.
-  cin >> noskipws;
-  while (true)
+    print("Name and number of guests: ");
+    string guestName;
+    int    partySize{0};
+    // Read characters until we find a digit.
+    cin >> noskipws;
+    while (true)
     {
-      // 'peek' at next character.
-      char ch{ static_cast<char> (cin.peek ()) };
-      if (!cin)
+        // 'peek' at next character.
+        char ch{static_cast<char>(cin.peek())};
+        if (!cin)
         {
-          break;
+            break;
         }
-      if (isdigit (ch))
+        if (isdigit(ch))
         {
-          // Next character will be a digit, so stop the loop.
-          break;
+            // Next character will be a digit, so stop the loop.
+            break;
         }
-      // Next character will be a non-digit, so read it.
-      cin >> ch;
-      if (!cin)
+        // Next character will be a non-digit, so read it.
+        cin >> ch;
+        if (!cin)
         {
-          break;
+            break;
         }
-      guestName += ch;
+        guestName += ch;
     }
-  // Read partySize, if the stream is not in error state.
-  if (cin)
+    // Read partySize, if the stream is not in error state.
+    if (cin)
     {
-      cin >> partySize;
+        cin >> partySize;
     }
-  if (!cin)
+    if (!cin)
     {
-      println (cerr, "Error getting party size.");
-      return;
+        println(cerr, "Error getting party size.");
+        return;
     }
 
-  println ("Thank you '{}', party of {}.", guestName, partySize);
-  if (partySize > 10)
+    println("Thank you '{}', party of {}.", guestName, partySize);
+    if (partySize > 10)
     {
-      println ("An extra gratuity will apply.");
+        println("An extra gratuity will apply.");
     }
 }
 
-int
-main ()
+int main()
 {
-  getReservationData ();
+    getReservationData();
 }

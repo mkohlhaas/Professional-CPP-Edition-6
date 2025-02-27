@@ -1,44 +1,69 @@
 #pragma once
 
-#include <vector>
 #include <cstddef>
+#include <vector>
 
-template <typename T, std::size_t N>
-class NDGrid final
+template <typename T, std::size_t N> class NDGrid final
 {
-public:
-	explicit NDGrid(std::size_t size = DefaultSize) { resize(size); }
+  public:
+    explicit NDGrid(std::size_t size = DefaultSize)
+    {
+        resize(size);
+    }
 
-	NDGrid<T, N-1>& operator[](std::size_t x) { return m_elements[x]; }
-	const NDGrid<T, N-1>& operator[](std::size_t x) const { return m_elements[x]; }
+    NDGrid<T, N - 1> &operator[](std::size_t x)
+    {
+        return m_elements[x];
+    }
+    const NDGrid<T, N - 1> &operator[](std::size_t x) const
+    {
+        return m_elements[x];
+    }
 
-	void resize(std::size_t newSize)
-	{
-		m_elements.resize(newSize, NDGrid<T, N-1> { newSize });
-	}
+    void resize(std::size_t newSize)
+    {
+        m_elements.resize(newSize, NDGrid<T, N - 1>{newSize});
+    }
 
-	std::size_t getSize() const { return m_elements.size(); }
+    std::size_t getSize() const
+    {
+        return m_elements.size();
+    }
 
-	static constexpr std::size_t DefaultSize{ 10 };
+    static constexpr std::size_t DefaultSize{10};
 
-private:
-	std::vector<NDGrid<T, N-1>> m_elements;
+  private:
+    std::vector<NDGrid<T, N - 1>> m_elements;
 };
 
-template <typename T>
-class NDGrid<T, 1> final
+template <typename T> class NDGrid<T, 1> final
 {
-public:
-	explicit NDGrid(std::size_t size = DefaultSize) { resize(size); }
+  public:
+    explicit NDGrid(std::size_t size = DefaultSize)
+    {
+        resize(size);
+    }
 
-	T& operator[](std::size_t x) { return m_elements[x]; }
-	const T& operator[](std::size_t x) const { return m_elements[x]; }
+    T &operator[](std::size_t x)
+    {
+        return m_elements[x];
+    }
+    const T &operator[](std::size_t x) const
+    {
+        return m_elements[x];
+    }
 
-	void resize(std::size_t newSize) { m_elements.resize(newSize); }
-	std::size_t getSize() const { return m_elements.size(); }
+    void resize(std::size_t newSize)
+    {
+        m_elements.resize(newSize);
+    }
+    std::size_t getSize() const
+    {
+        return m_elements.size();
+    }
 
-	static constexpr std::size_t DefaultSize{ 10 };
+    static constexpr std::size_t DefaultSize{10};
 
-private:
-	std::vector<T> m_elements;
+  private:
+    std::vector<T> m_elements;
 };

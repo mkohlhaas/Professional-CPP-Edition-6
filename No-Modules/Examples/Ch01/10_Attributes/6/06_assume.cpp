@@ -2,15 +2,13 @@
 
 using namespace std;
 
-int
-divideBy32 (int x)
+int divideBy32(int x)
 {
-  [[assume (x >= 0)]];
-  return x / 32;
+    [[assume(x >= 0)]];
+    return x / 32;
 }
 
-int
-main ()
+int main()
 {
-  println ("result: {}", divideBy32 (64));
+    println("result: {}", divideBy32(64));
 }

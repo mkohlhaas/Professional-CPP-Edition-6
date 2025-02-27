@@ -6,7 +6,13 @@
 
 class ToyotaFactory : public ICarFactory
 {
-public:
-	std::unique_ptr<ICar> makeSuv() override { return std::make_unique<ToyotaSuv>(); }
-	std::unique_ptr<ICar> makeSedan() override { return std::make_unique<ToyotaSedan>(); }
+  public:
+    std::unique_ptr<ICar> makeSuv() override
+    {
+        return std::make_unique<ToyotaSuv>();
+    }
+    std::unique_ptr<ICar> makeSedan() override
+    {
+        return std::make_unique<ToyotaSedan>();
+    }
 };

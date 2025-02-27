@@ -3,42 +3,38 @@
 
 using namespace std;
 
-WeatherPrediction::~WeatherPrediction () {}
-
-void
-WeatherPrediction::setCurrentTempFahrenheit (int temp)
+WeatherPrediction::~WeatherPrediction()
 {
-  m_currentTempFahrenheit = temp;
 }
 
-void
-WeatherPrediction::setPositionOfJupiter (int distanceFromMars)
+void WeatherPrediction::setCurrentTempFahrenheit(int temp)
 {
-  m_distanceFromMars = distanceFromMars;
+    m_currentTempFahrenheit = temp;
 }
 
-int
-WeatherPrediction::getTomorrowTempFahrenheit () const
+void WeatherPrediction::setPositionOfJupiter(int distanceFromMars)
 {
-  // Obviously, this is nonsense
-  return (m_distanceFromMars / 1000) + m_currentTempFahrenheit;
+    m_distanceFromMars = distanceFromMars;
 }
 
-double
-WeatherPrediction::getChanceOfRain () const
+int WeatherPrediction::getTomorrowTempFahrenheit() const
 {
-  // Obviously, this is nonsense too
-  return 0.5;
+    // Obviously, this is nonsense
+    return (m_distanceFromMars / 1000) + m_currentTempFahrenheit;
 }
 
-void
-WeatherPrediction::showResult () const
+double WeatherPrediction::getChanceOfRain() const
 {
-  println ("Result: {} chance.  Temp. {}", getChanceOfRain () * 100, getTomorrowTempFahrenheit ());
+    // Obviously, this is nonsense too
+    return 0.5;
 }
 
-std::string
-WeatherPrediction::getTemperature () const
+void WeatherPrediction::showResult() const
 {
-  return to_string (m_currentTempFahrenheit);
+    println("Result: {} chance.  Temp. {}", getChanceOfRain() * 100, getTomorrowTempFahrenheit());
+}
+
+std::string WeatherPrediction::getTemperature() const
+{
+    return to_string(m_currentTempFahrenheit);
 }

@@ -7,41 +7,39 @@
 
 using namespace std;
 
-vector<int>
-readIntegerFile (const string &filename)
+vector<int> readIntegerFile(const string &filename)
 {
-  ifstream inputStream{ filename };
-  if (inputStream.fail ())
+    ifstream inputStream{filename};
+    if (inputStream.fail())
     {
-      // We failed to open the file: throw an exception.
-      throw exception{};
+        // We failed to open the file: throw an exception.
+        throw exception{};
     }
 
-  // Read the integers one-by-one and add them to a vector.
-  vector<int> integers;
-  int         temp;
-  while (inputStream >> temp)
+    // Read the integers one-by-one and add them to a vector.
+    vector<int> integers;
+    int         temp;
+    while (inputStream >> temp)
     {
-      integers.push_back (temp);
+        integers.push_back(temp);
     }
-  return integers;
+    return integers;
 }
 
-int
-main ()
+int main()
 {
-  const string filename{ "IntegerFile.txt" };
-  vector<int>  myInts;
+    const string filename{"IntegerFile.txt"};
+    vector<int>  myInts;
 
-  try
+    try
     {
-      myInts = readIntegerFile (filename);
+        myInts = readIntegerFile(filename);
     }
-  catch (exception & /* e */)
+    catch (exception & /* e */)
     {
-      println (cerr, "Unable to open file {}", filename);
-      return 1;
+        println(cerr, "Unable to open file {}", filename);
+        return 1;
     }
 
-  println ("{} ", myInts);
+    println("{} ", myInts);
 }

@@ -4,24 +4,23 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  CableCompany myCC;
-  myCC.addPackage ("basic", "1111000000");
-  myCC.addPackage ("premium", "1111111111");
-  myCC.addPackage ("sports", "0000100111");
+    CableCompany myCC;
+    myCC.addPackage("basic", "1111000000");
+    myCC.addPackage("premium", "1111111111");
+    myCC.addPackage("sports", "0000100111");
 
-  myCC.newCustomer ("Marc G.", "basic");
-  myCC.addPackageToCustomer ("Marc G.", "sports");
-  println ("{}", myCC.getCustomerChannels ("Marc G.").to_string ());
+    myCC.newCustomer("Marc G.", "basic");
+    myCC.addPackageToCustomer("Marc G.", "sports");
+    println("{}", myCC.getCustomerChannels("Marc G.").to_string());
 
-  try
+    try
     {
-      println ("{}", myCC.getCustomerChannels ("John").to_string ());
+        println("{}", myCC.getCustomerChannels("John").to_string());
     }
-  catch (const exception &e)
+    catch (const exception &e)
     {
-      println ("Error: {}", e.what ());
+        println("Error: {}", e.what());
     }
 }

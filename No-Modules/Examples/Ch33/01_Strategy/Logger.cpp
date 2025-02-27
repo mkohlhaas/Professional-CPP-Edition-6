@@ -6,44 +6,41 @@
 
 using namespace std;
 
-Logger::Logger (const string &logFilename)
+Logger::Logger(const string &logFilename)
 {
-  m_outputStream.open (logFilename, ios_base::app);
-  if (!m_outputStream.good ())
+    m_outputStream.open(logFilename, ios_base::app);
+    if (!m_outputStream.good())
     {
-      throw runtime_error{ "Unable to initialize the Logger!" };
+        throw runtime_error{"Unable to initialize the Logger!"};
     }
-  println (m_outputStream, "{}: Logger started.", chrono::system_clock::now ());
+    println(m_outputStream, "{}: Logger started.", chrono::system_clock::now());
 }
 
-void
-Logger::setLogLevel (LogLevel level)
+void Logger::setLogLevel(LogLevel level)
 {
-  m_logLevel = level;
+    m_logLevel = level;
 }
 
-string_view
-Logger::getLogLevelString (LogLevel level) const
+string_view Logger::getLogLevelString(LogLevel level) const
 {
-  switch (level)
+    switch (level)
     {
     case LogLevel::Debug:
-      return "DEBUG";
+        return "DEBUG";
     case LogLevel::Info:
-      return "INFO";
+        return "INFO";
     case LogLevel::Error:
-      return "ERROR";
+        return "ERROR";
     }
-  throw runtime_error{ "Invalid log level." };
+    throw runtime_error{"Invalid log level."};
 }
 
-void
-Logger::log (string_view message, LogLevel logLevel)
+void Logger::log(string_view message, LogLevel logLevel)
 {
-  if (m_logLevel > logLevel)
+    if (m_logLevel > logLevel)
     {
-      return;
+        return;
     }
 
-  println (m_outputStream, "{}: [{}] {}", chrono::system_clock::now (), getLogLevelString (logLevel), message);
+    println(m_outputStream, "{}: [{}] {}", chrono::system_clock::now(), getLogLevelString(logLevel), message);
 }

@@ -4,25 +4,24 @@ using namespace std;
 
 class Data final
 {
-public:
-  explicit Data (int value = 0) : m_value{ value } {}
-  int
-  getValue () const
-  {
-    return m_value;
-  }
-  void
-  setValue (int value)
-  {
-    m_value = value;
-  }
+  public:
+    explicit Data(int value = 0) : m_value{value}
+    {
+    }
+    int getValue() const
+    {
+        return m_value;
+    }
+    void setValue(int value)
+    {
+        m_value = value;
+    }
 
-private:
-  int m_value;
+  private:
+    int m_value;
 };
 
-int
-main ()
+int main()
 {
-  map<int, Data> dataMap;
+    map<int, Data> dataMap;
 }

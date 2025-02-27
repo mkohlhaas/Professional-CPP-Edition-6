@@ -5,19 +5,18 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  priority_queue<int, vector<int>, greater<> > myQueue;
+    priority_queue<int, vector<int>, greater<>> myQueue;
 
-  myQueue.push (3);
-  myQueue.push (4);
-  myQueue.push (2);
-  myQueue.push (1);
+    myQueue.push(3);
+    myQueue.push(4);
+    myQueue.push(2);
+    myQueue.push(1);
 
-  while (!myQueue.empty ())
+    while (!myQueue.empty())
     {
-      print ("{} ", myQueue.top ());
-      myQueue.pop ();
+        print("{} ", myQueue.top());
+        myQueue.pop();
     }
 }

@@ -2,10 +2,9 @@
 
 #include "StringSpreadsheetCell.h"
 
-StringSpreadsheetCell
-operator+ (const StringSpreadsheetCell &lhs, const StringSpreadsheetCell &rhs)
+StringSpreadsheetCell operator+(const StringSpreadsheetCell &lhs, const StringSpreadsheetCell &rhs)
 {
-  StringSpreadsheetCell newCell;
-  newCell.set (lhs.getString () + rhs.getString ());
-  return newCell;
+    StringSpreadsheetCell newCell;
+    newCell.set(lhs.getString() + rhs.getString());
+    return newCell;
 }

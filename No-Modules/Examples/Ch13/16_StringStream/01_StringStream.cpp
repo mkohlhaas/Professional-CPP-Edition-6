@@ -5,33 +5,32 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  println ("Enter tokens. "
-           "Control+D (Unix) or Control+Z (Windows) followed by Enter to end.");
+    println("Enter tokens. "
+            "Control+D (Unix) or Control+Z (Windows) followed by Enter to end.");
 
-  ostringstream outStream;
+    ostringstream outStream;
 
-  bool firstLoop{ true };
-  while (cin)
+    bool firstLoop{true};
+    while (cin)
     {
-      string nextToken;
-      print ("Next token: ");
-      cin >> nextToken;
+        string nextToken;
+        print("Next token: ");
+        cin >> nextToken;
 
-      if (!cin || nextToken == "done")
+        if (!cin || nextToken == "done")
         {
-          break;
+            break;
         }
 
-      if (!firstLoop)
+        if (!firstLoop)
         {
-          outStream << ", ";
+            outStream << ", ";
         }
-      outStream << '"' << nextToken << '"';
-      firstLoop = false;
+        outStream << '"' << nextToken << '"';
+        firstLoop = false;
     }
 
-  println ("The end result is: {}", outStream.str ());
+    println("The end result is: {}", outStream.str());
 }

@@ -3,34 +3,32 @@
 #include <print>
 using namespace std;
 
-void
-process (Pointer<SpreadsheetCell> &p)
+void process(Pointer<SpreadsheetCell> &p)
 {
-  // if (p != nullptr) { println("not nullptr"); }  // Error
-  if (p != 0)
+    // if (p != nullptr) { println("not nullptr"); }  // Error
+    if (p != 0)
     {
-      println ("not 0");
+        println("not 0");
     }
-  if (p)
+    if (p)
     {
-      println ("not nullptr");
+        println("not nullptr");
     }
-  if (!p)
+    if (!p)
     {
-      println ("nullptr");
+        println("nullptr");
     }
 }
 
-int
-main ()
+int main()
 {
-  Pointer<SpreadsheetCell> smartCell{ nullptr };
-  process (smartCell);
-  println ("");
+    Pointer<SpreadsheetCell> smartCell{nullptr};
+    process(smartCell);
+    println("");
 
-  Pointer<SpreadsheetCell> anotherSmartCell{ new SpreadsheetCell{ 5.0 } };
-  process (anotherSmartCell);
+    Pointer<SpreadsheetCell> anotherSmartCell{new SpreadsheetCell{5.0}};
+    process(anotherSmartCell);
 
-  int i{ anotherSmartCell }; // Converts Pointer to bool to int.
-  println ("{}", i);
+    int i{anotherSmartCell}; // Converts Pointer to bool to int.
+    println("{}", i);
 }

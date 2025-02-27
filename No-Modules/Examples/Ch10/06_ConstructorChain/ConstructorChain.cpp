@@ -4,39 +4,56 @@ using namespace std;
 
 class Something
 {
-public:
-  Something () { print ("2"); }
-  virtual ~Something () { print ("2"); }
+  public:
+    Something()
+    {
+        print("2");
+    }
+    virtual ~Something()
+    {
+        print("2");
+    }
 };
 
 class Base
 {
-public:
-  Base () { print ("1"); }
-  virtual ~Base () { print ("1"); }
+  public:
+    Base()
+    {
+        print("1");
+    }
+    virtual ~Base()
+    {
+        print("1");
+    }
 };
 
 class Derived : public Base
 {
-public:
-  Derived () { print ("3"); }
-  virtual ~Derived () override { print ("3"); }
+  public:
+    Derived()
+    {
+        print("3");
+    }
+    virtual ~Derived() override
+    {
+        print("3");
+    }
 
-private:
-  Something m_dataMember;
+  private:
+    Something m_dataMember;
 };
 
-int
-main ()
+int main()
 {
-  {
-    Derived myDerived;
-  }
+    {
+        Derived myDerived;
+    }
 
-  println ("");
+    println("");
 
-  {
-    Base *ptr{ new Derived{} };
-    delete ptr;
-  }
+    {
+        Base *ptr{new Derived{}};
+        delete ptr;
+    }
 }

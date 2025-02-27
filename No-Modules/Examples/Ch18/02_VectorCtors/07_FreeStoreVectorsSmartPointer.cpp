@@ -7,8 +7,7 @@ class Element
 {
 };
 
-int
-main ()
+int main()
 {
-  auto elementVector{ make_unique<vector<Element> > (10) };
+    auto elementVector{make_unique<vector<Element>>(10)};
 }

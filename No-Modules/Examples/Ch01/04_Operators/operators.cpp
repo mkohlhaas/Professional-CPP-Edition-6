@@ -2,31 +2,30 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  int    someInteger{ 256 };
-  short  someShort;
-  long   someLong;
-  float  someFloat;
-  double someDouble;
+    int    someInteger{256};
+    short  someShort;
+    long   someLong;
+    float  someFloat;
+    double someDouble;
 
-  someInteger++;
-  someInteger *= 2;
+    someInteger++;
+    someInteger *= 2;
 
-  // Conversion from larger integer type to smaller integer type
-  // can cause a warning or error, hence static_cast() is required.
-  someShort = static_cast<short> (someInteger);
-  someLong  = someShort * 1000;
-  someFloat = someLong + 0.785f;
+    // Conversion from larger integer type to smaller integer type
+    // can cause a warning or error, hence static_cast() is required.
+    someShort = static_cast<short>(someInteger);
+    someLong  = someShort * 1000;
+    someFloat = someLong + 0.785f;
 
-  // To make sure the division is performed with double precision,
-  // someFloat is explicitly converted to double first.
-  someDouble = static_cast<double> (someFloat) / 100000;
+    // To make sure the division is performed with double precision,
+    // someFloat is explicitly converted to double first.
+    someDouble = static_cast<double>(someFloat) / 100000;
 
-  println ("int:\t{}", someInteger);
-  println ("short:\t{}", someShort);
-  println ("long:\t{}", someLong);
-  println ("float:\t{}", someFloat);
-  println ("double:\t{}", someDouble);
+    println("int:\t{}", someInteger);
+    println("short:\t{}", someShort);
+    println("long:\t{}", someLong);
+    println("float:\t{}", someFloat);
+    println("double:\t{}", someDouble);
 }

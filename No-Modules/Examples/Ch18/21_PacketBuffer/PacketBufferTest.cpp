@@ -6,43 +6,43 @@ using namespace std;
 
 class IPPacket final
 {
-public:
-  explicit IPPacket (int id) : m_id{ id } {}
-  int
-  getID () const
-  {
-    return m_id;
-  }
+  public:
+    explicit IPPacket(int id) : m_id{id}
+    {
+    }
+    int getID() const
+    {
+        return m_id;
+    }
 
-private:
-  int m_id;
+  private:
+    int m_id;
 };
 
-int
-main ()
+int main()
 {
-  PacketBuffer<IPPacket> ipPackets{ 3 };
+    PacketBuffer<IPPacket> ipPackets{3};
 
-  // Add 4 packets
-  for (int i{ 1 }; i <= 4; ++i)
+    // Add 4 packets
+    for (int i{1}; i <= 4; ++i)
     {
-      if (!ipPackets.bufferPacket (IPPacket{ i }))
+        if (!ipPackets.bufferPacket(IPPacket{i}))
         {
-          println ("Packet {} dropped (queue is full).", i);
+            println("Packet {} dropped (queue is full).", i);
         }
     }
 
-  while (true)
+    while (true)
     {
-      try
+        try
         {
-          IPPacket packet{ ipPackets.getNextPacket () };
-          println ("Processing packet {}", packet.getID ());
+            IPPacket packet{ipPackets.getNextPacket()};
+            println("Processing packet {}", packet.getID());
         }
-      catch (const out_of_range &)
+        catch (const out_of_range &)
         {
-          println ("Queue is empty.");
-          break;
+            println("Queue is empty.");
+            break;
         }
     }
 }

@@ -2,8 +2,7 @@
 
 extern int x;
 
-int
-main ()
+int main()
 {
-  std::println ("{}", x);
+    std::println("{}", x);
 }

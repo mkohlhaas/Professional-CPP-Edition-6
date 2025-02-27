@@ -5,48 +5,46 @@
 
 using namespace std;
 
-void
-getReservationData ()
+void getReservationData()
 {
-  print ("Name and number of guests: ");
-  string guestName;
-  int    partySize{ 0 };
-  // Read characters until we find a digit
-  char ch;
-  cin >> noskipws;
-  while (cin >> ch)
+    print("Name and number of guests: ");
+    string guestName;
+    int    partySize{0};
+    // Read characters until we find a digit
+    char ch;
+    cin >> noskipws;
+    while (cin >> ch)
     {
-      if (isdigit (ch))
+        if (isdigit(ch))
         {
-          cin.unget ();
-          if (cin.fail ())
+            cin.unget();
+            if (cin.fail())
             {
-              println (cerr, "unget() failed.");
+                println(cerr, "unget() failed.");
             }
-          break;
+            break;
         }
-      guestName += ch;
+        guestName += ch;
     }
-  // Read partySize, if the stream is not in error state
-  if (cin)
+    // Read partySize, if the stream is not in error state
+    if (cin)
     {
-      cin >> partySize;
+        cin >> partySize;
     }
-  if (!cin)
+    if (!cin)
     {
-      println (cerr, "Error getting party size.");
-      return;
+        println(cerr, "Error getting party size.");
+        return;
     }
 
-  println ("Thank you '{}', party of {}.", guestName, partySize);
-  if (partySize > 10)
+    println("Thank you '{}', party of {}.", guestName, partySize);
+    if (partySize > 10)
     {
-      println ("An extra gratuity will apply.");
+        println("An extra gratuity will apply.");
     }
 }
 
-int
-main ()
+int main()
 {
-  getReservationData ();
+    getReservationData();
 }

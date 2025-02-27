@@ -5,16 +5,15 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  ifstream inputFile{ "some_data.txt" };
-  if (inputFile.fail ())
+    ifstream inputFile{"some_data.txt"};
+    if (inputFile.fail())
     {
-      println (cerr, "Unable to open file for reading.");
-      return 1;
+        println(cerr, "Unable to open file for reading.");
+        return 1;
     }
-  string fileContents;
-  getline (inputFile, fileContents, '\0');
-  println ("\"{}\"", fileContents);
+    string fileContents;
+    getline(inputFile, fileContents, '\0');
+    println("\"{}\"", fileContents);
 }

@@ -4,8 +4,8 @@ using namespace std;
 
 class Animal
 {
-public:
-  virtual ~Animal () = default;
+  public:
+    virtual ~Animal() = default;
 };
 class Dog : public Animal
 {
@@ -14,22 +14,20 @@ class Bird : public Animal
 {
 };
 
-void
-speak (const Animal &animal)
+void speak(const Animal &animal)
 {
-  if (typeid (animal) == typeid (Dog))
+    if (typeid(animal) == typeid(Dog))
     {
-      println ("Woof!");
+        println("Woof!");
     }
-  else if (typeid (animal) == typeid (Bird))
+    else if (typeid(animal) == typeid(Bird))
     {
-      println ("Chirp!");
+        println("Chirp!");
     }
 }
 
-int
-main ()
+int main()
 {
-  speak (Dog{});
-  speak (Bird{});
+    speak(Dog{});
+    speak(Bird{});
 }

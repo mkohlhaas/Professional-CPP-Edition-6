@@ -4,33 +4,36 @@
 
 using namespace std;
 
-Logger::Logger () { println ("Logger constructor"); }
-
-void
-Logger::log (LogLevel level, const string &message)
+Logger::Logger()
 {
-  println ("{}: [{}] {}", chrono::system_clock::now (), getLogLevelString (level), message);
+    println("Logger constructor");
 }
 
-string_view
-Logger::getLogLevelString (LogLevel level) const
+void Logger::log(LogLevel level, const string &message)
 {
-  switch (level)
+    println("{}: [{}] {}", chrono::system_clock::now(), getLogLevelString(level), message);
+}
+
+string_view Logger::getLogLevelString(LogLevel level) const
+{
+    switch (level)
     {
     case LogLevel::Debug:
-      return "DEBUG";
+        return "DEBUG";
     case LogLevel::Info:
-      return "INFO";
+        return "INFO";
     case LogLevel::Error:
-      return "ERROR";
+        return "ERROR";
     }
-  throw runtime_error{ "Invalid log level." };
+    throw runtime_error{"Invalid log level."};
 }
 
-AdaptedLogger::AdaptedLogger () { println ("AdaptedLogger constructor"); }
-
-void
-AdaptedLogger::log (string_view message)
+AdaptedLogger::AdaptedLogger()
 {
-  m_logger.log (Logger::LogLevel::Info, string{ message });
+    println("AdaptedLogger constructor");
+}
+
+void AdaptedLogger::log(string_view message)
+{
+    m_logger.log(Logger::LogLevel::Info, string{message});
 }

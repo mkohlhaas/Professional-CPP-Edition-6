@@ -4,31 +4,25 @@
 
 using namespace std;
 
-void
-handleValue (int value)
+void handleValue(int value)
 {
-  println ("Integer: {}", value);
+    println("Integer: {}", value);
 }
-void
-handleValue (double value)
+void handleValue(double value)
 {
-  println ("Double: {}", value);
+    println("Double: {}", value);
 }
-void
-handleValue (const string &value)
+void handleValue(const string &value)
 {
-  println ("String: {}", value);
+    println("String: {}", value);
 }
 
-template <typename... Tn>
-void
-processValues (Tn &&...args)
+template <typename... Tn> void processValues(Tn &&...args)
 {
-  (handleValue (forward<Tn> (args)), ...);
+    (handleValue(forward<Tn>(args)), ...);
 }
 
-int
-main ()
+int main()
 {
-  processValues (1, 2, 3.56, "test", 1.1f);
+    processValues(1, 2, 3.56, "test", 1.1f);
 }

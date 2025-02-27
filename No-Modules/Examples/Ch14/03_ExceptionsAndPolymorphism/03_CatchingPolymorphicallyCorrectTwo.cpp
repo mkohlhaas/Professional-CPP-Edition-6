@@ -9,56 +9,54 @@
 
 using namespace std;
 
-vector<int>
-readIntegerFile (const string &filename)
+vector<int> readIntegerFile(const string &filename)
 {
-  ifstream inputStream{ filename };
-  if (inputStream.fail ())
+    ifstream inputStream{filename};
+    if (inputStream.fail())
     {
-      // We failed to open the file: throw an exception.
-      const string error{ format ("Unable to open file {}.", filename) };
-      throw invalid_argument{ error };
+        // We failed to open the file: throw an exception.
+        const string error{format("Unable to open file {}.", filename)};
+        throw invalid_argument{error};
     }
 
-  // Read the integers one-by-one and add them to a vector.
-  vector<int> integers;
-  int         temp;
-  while (inputStream >> temp)
+    // Read the integers one-by-one and add them to a vector.
+    vector<int> integers;
+    int         temp;
+    while (inputStream >> temp)
     {
-      integers.push_back (temp);
+        integers.push_back(temp);
     }
 
-  if (!inputStream.eof ())
+    if (!inputStream.eof())
     {
-      // We did not reach the end-of-file.
-      // This means that some error occurred while reading the file.
-      // Throw an exception.
-      const string error{ format ("Unable to read file {}.", filename) };
-      throw runtime_error{ error };
+        // We did not reach the end-of-file.
+        // This means that some error occurred while reading the file.
+        // Throw an exception.
+        const string error{format("Unable to read file {}.", filename)};
+        throw runtime_error{error};
     }
 
-  return integers;
+    return integers;
 }
 
-int
-main ()
+int main()
 {
-  const string filename{ "IntegerFile.txt" };
-  vector<int>  myInts;
+    const string filename{"IntegerFile.txt"};
+    vector<int>  myInts;
 
-  try
+    try
     {
-      myInts = readIntegerFile (filename);
+        myInts = readIntegerFile(filename);
     }
-  catch (const invalid_argument & /* e */)
+    catch (const invalid_argument & /* e */)
     { // List the derived class first.
       // Take some special action for invalid filenames.
     }
-  catch (const exception &e)
+    catch (const exception &e)
     { // Now list exception.
-      println (cerr, "{}", e.what ());
-      return 1;
+        println(cerr, "{}", e.what());
+        return 1;
     }
 
-  println ("{} ", myInts);
+    println("{} ", myInts);
 }

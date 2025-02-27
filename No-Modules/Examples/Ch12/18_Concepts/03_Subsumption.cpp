@@ -4,20 +4,21 @@
 using namespace std;
 
 template <typename T>
-requires integral<T> void
-         process (const T &t)
+    requires integral<T>
+void process(const T &t)
 {
-  println ("integral<T>");
+    println("integral<T>");
 }
 
-template <typename T> requires (integral<T> && sizeof (T) == 4) void process (const T &t)
+template <typename T>
+    requires(integral<T> && sizeof(T) == 4)
+void process(const T &t)
 {
-  println ("integral<T> && sizeof(T) == 4");
+    println("integral<T> && sizeof(T) == 4");
 }
 
-int
-main ()
+int main()
 {
-  process (int{ 1 });
-  process (short{ 2 });
+    process(int{1});
+    process(short{2});
 }

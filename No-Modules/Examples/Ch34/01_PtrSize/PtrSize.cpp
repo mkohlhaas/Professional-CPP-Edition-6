@@ -2,9 +2,8 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  int *ptr{ nullptr };
-  println ("ptr size is {} bytes", sizeof (ptr));
+    int *ptr{nullptr};
+    println("ptr size is {} bytes", sizeof(ptr));
 }

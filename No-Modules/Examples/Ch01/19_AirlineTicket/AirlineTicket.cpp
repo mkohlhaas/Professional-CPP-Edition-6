@@ -14,52 +14,45 @@ using namespace std;
 //	// Nothing to do in terms of cleanup
 // }
 
-double
-AirlineTicket::calculatePriceInDollars ()
+double AirlineTicket::calculatePriceInDollars()
 {
-  if (hasEliteSuperRewardsStatus ())
+    if (hasEliteSuperRewardsStatus())
     {
-      return 0;
+        return 0;
     }
-  else
+    else
     {
 
-      return getNumberOfMiles () * 0.1;
+        return getNumberOfMiles() * 0.1;
     }
 }
 
-string
-AirlineTicket::getPassengerName ()
+string AirlineTicket::getPassengerName()
 {
-  return m_passengerName;
+    return m_passengerName;
 }
 
-void
-AirlineTicket::setPassengerName (string name)
+void AirlineTicket::setPassengerName(string name)
 {
-  m_passengerName = name;
+    m_passengerName = name;
 }
 
-int
-AirlineTicket::getNumberOfMiles ()
+int AirlineTicket::getNumberOfMiles()
 {
-  return m_numberOfMiles;
+    return m_numberOfMiles;
 }
 
-void
-AirlineTicket::setNumberOfMiles (int miles)
+void AirlineTicket::setNumberOfMiles(int miles)
 {
-  m_numberOfMiles = miles;
+    m_numberOfMiles = miles;
 }
 
-bool
-AirlineTicket::hasEliteSuperRewardsStatus ()
+bool AirlineTicket::hasEliteSuperRewardsStatus()
 {
-  return m_hasEliteSuperRewardsStatus;
+    return m_hasEliteSuperRewardsStatus;
 }
 
-void
-AirlineTicket::setHasEliteSuperRewardsStatus (bool status)
+void AirlineTicket::setHasEliteSuperRewardsStatus(bool status)
 {
-  m_hasEliteSuperRewardsStatus = status;
+    m_hasEliteSuperRewardsStatus = status;
 }

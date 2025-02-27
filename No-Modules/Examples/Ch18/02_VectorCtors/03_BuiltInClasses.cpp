@@ -4,9 +4,8 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  vector<string> stringVector (10, "hello");
-  println ("Vector elements: {}", stringVector);
+    vector<string> stringVector(10, "hello");
+    println("Vector elements: {}", stringVector);
 }

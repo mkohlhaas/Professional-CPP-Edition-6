@@ -1,7 +1,6 @@
 using namespace std;
 
-int
-main ()
+int main()
 {
-  /* How to test the SpreadsheetCell class follows later in the chapter. */
+    /* How to test the SpreadsheetCell class follows later in the chapter. */
 }

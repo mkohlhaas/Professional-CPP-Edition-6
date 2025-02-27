@@ -1,20 +1,17 @@
 #include <print>
 
-[[deprecated ("Unsafe function, please use xyz")]]
-void
-func ()
+[[deprecated("Unsafe function, please use xyz")]]
+void func()
 {
-  std::println ("I am deprecated!");
+    std::println("I am deprecated!");
 }
 
-void
-xyz ()
+void xyz()
 {
-  std::println ("I am up-to-date!");
+    std::println("I am up-to-date!");
 }
 
-int
-main ()
+int main()
 {
-  func ();
+    func();
 }

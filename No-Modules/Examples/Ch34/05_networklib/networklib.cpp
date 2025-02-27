@@ -6,38 +6,32 @@
 //                                                                 //
 /////////////////////////////////////////////////////////////////////
 
-HostHandle *
-lookupHostByName (const char *hostName)
+HostHandle *lookupHostByName(const char *hostName)
 {
-  return new HostHandle{};
+    return new HostHandle{};
 }
 
-void
-freeHostHandle (HostHandle *host)
+void freeHostHandle(HostHandle *host)
 {
-  delete host;
+    delete host;
 }
 
-ConnectionHandle *
-connectToHost (HostHandle *host)
+ConnectionHandle *connectToHost(HostHandle *host)
 {
-  return new ConnectionHandle{};
+    return new ConnectionHandle{};
 }
 
-void
-closeConnection (ConnectionHandle *connection)
+void closeConnection(ConnectionHandle *connection)
 {
-  delete connection;
+    delete connection;
 }
 
-char *
-retrieveWebPage (ConnectionHandle *connection, const char *page)
+char *retrieveWebPage(ConnectionHandle *connection, const char *page)
 {
-  return new char[]{ "Hello Webpage!" };
+    return new char[]{"Hello Webpage!"};
 }
 
-void
-freeWebPage (char *page)
+void freeWebPage(char *page)
 {
-  delete[] page;
+    delete[] page;
 }

@@ -3,10 +3,14 @@
 
 using namespace std;
 
-void printString(const string &myString) { println("{}", myString); }
+void printString(const string &myString)
+{
+    println("{}", myString);
+}
 
-int main() {
-  string someString{"Hello World."};
-  printString(someString);
-  printString("Hello World."); // Passing literals works
+int main()
+{
+    string someString{"Hello World."};
+    printString(someString);
+    printString("Hello World."); // Passing literals works
 }

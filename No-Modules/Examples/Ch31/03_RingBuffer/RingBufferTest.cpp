@@ -4,74 +4,68 @@ using namespace std;
 
 RingBuffer debugBuffer;
 
-#define LOG(...) debugBuffer.addEntry (__func__, "(): ", __VA_ARGS__)
+#define LOG(...) debugBuffer.addEntry(__func__, "(): ", __VA_ARGS__)
 
 class ComplicatedClass
 {
 };
-ostream &
-operator<< (ostream &outStream, const ComplicatedClass & /* src */)
+ostream &operator<<(ostream &outStream, const ComplicatedClass & /* src */)
 {
-  outStream << "ComplicatedClass";
-  return outStream;
+    outStream << "ComplicatedClass";
+    return outStream;
 }
 
 class UserCommand
 {
 };
-ostream &
-operator<< (ostream &outStream, const UserCommand & /* src */)
+ostream &operator<<(ostream &outStream, const UserCommand & /* src */)
 {
-  outStream << "UserCommand";
-  return outStream;
+    outStream << "UserCommand";
+    return outStream;
 }
 
-UserCommand
-getNextCommand (ComplicatedClass * /* obj */)
+UserCommand getNextCommand(ComplicatedClass * /* obj */)
 {
-  UserCommand cmd;
-  return cmd;
+    UserCommand cmd;
+    return cmd;
 }
 
-void
-processUserCommand (const UserCommand & /* cmd */)
+void processUserCommand(const UserCommand & /* cmd */)
 {
-  // Details omitted for brevity.
+    // Details omitted for brevity.
 }
 
-void
-trickyFunction (ComplicatedClass *obj)
+void trickyFunction(ComplicatedClass *obj)
 {
-  LOG ("given argument: ", *obj);
+    LOG("given argument: ", *obj);
 
-  for (size_t i{ 0 }; i < 100; ++i)
+    for (size_t i{0}; i < 100; ++i)
     {
-      UserCommand cmd{ getNextCommand (obj) };
-      LOG ("retrieved cmd ", i, ": ", cmd);
+        UserCommand cmd{getNextCommand(obj)};
+        LOG("retrieved cmd ", i, ": ", cmd);
 
-      try
+        try
         {
-          processUserCommand (cmd);
+            processUserCommand(cmd);
         }
-      catch (const exception &e)
+        catch (const exception &e)
         {
-          LOG ("exception from processUserCommand(): ", e.what ());
+            LOG("exception from processUserCommand(): ", e.what());
         }
     }
 }
 
-int
-main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-  // Log the command-line arguments.
-  for (size_t i{ 0 }; i < argc; ++i)
+    // Log the command-line arguments.
+    for (size_t i{0}; i < argc; ++i)
     {
-      LOG ("Argument: ", argv[i]);
+        LOG("Argument: ", argv[i]);
     }
 
-  ComplicatedClass obj;
-  trickyFunction (&obj);
+    ComplicatedClass obj;
+    trickyFunction(&obj);
 
-  // Print the current contents of the debug buffer to cout.
-  cout << debugBuffer;
+    // Print the current contents of the debug buffer to cout.
+    cout << debugBuffer;
 }

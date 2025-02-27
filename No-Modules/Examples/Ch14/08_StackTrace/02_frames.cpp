@@ -3,41 +3,36 @@
 
 using namespace std;
 
-void
-handleStackTrace (const stacktrace &trace)
+void handleStackTrace(const stacktrace &trace)
 {
-  println ("  Stack trace information:");
-  println ("    There are {} frames in the stack trace.", trace.size ());
-  println ("    Here are the descriptions of all the frames:");
-  for (unsigned index{ 0 }; auto &&frame : trace)
+    println("  Stack trace information:");
+    println("    There are {} frames in the stack trace.", trace.size());
+    println("    Here are the descriptions of all the frames:");
+    for (unsigned index{0}; auto &&frame : trace)
     {
-      println ("      {} -> {}", index++, frame.description ());
+        println("      {} -> {}", index++, frame.description());
     }
 }
 
-void
-C ()
+void C()
 {
-  println ("Entered C().");
-  handleStackTrace (stacktrace::current ());
+    println("Entered C().");
+    handleStackTrace(stacktrace::current());
 }
 
-void
-B ()
+void B()
 {
-  println ("Entered B().");
-  C ();
+    println("Entered B().");
+    C();
 }
 
-void
-A ()
+void A()
 {
-  println ("Entered A().");
-  B ();
+    println("Entered A().");
+    B();
 }
 
-int
-main ()
+int main()
 {
-  A ();
+    A();
 }

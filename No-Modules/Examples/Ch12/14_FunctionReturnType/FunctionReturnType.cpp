@@ -1,11 +1,9 @@
 #include <print>
 
 // using automatic function return type deduction
-template <typename T1, typename T2>
-auto
-add (const T1 &t1, const T2 &t2)
+template <typename T1, typename T2> auto add(const T1 &t1, const T2 &t2)
 {
-  return t1 + t2;
+    return t1 + t2;
 }
 
 // using decltype(auto)
@@ -29,8 +27,7 @@ add (const T1 &t1, const T2 &t2)
 //	return t1 + t2;
 //}
 
-int
-main ()
+int main()
 {
-  std::println ("{}", add (2, 4));
+    std::println("{}", add(2, 4));
 }

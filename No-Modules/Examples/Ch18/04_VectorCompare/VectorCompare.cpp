@@ -3,29 +3,28 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  vector<int> vectorOne (10);
-  vector<int> vectorTwo (10);
+    vector<int> vectorOne(10);
+    vector<int> vectorTwo(10);
 
-  if (vectorOne == vectorTwo)
+    if (vectorOne == vectorTwo)
     {
-      println ("equal!");
+        println("equal!");
     }
-  else
+    else
     {
-      println ("not equal!");
+        println("not equal!");
     }
 
-  vectorOne[3] = 50;
+    vectorOne[3] = 50;
 
-  if (vectorOne < vectorTwo)
+    if (vectorOne < vectorTwo)
     {
-      println ("vectorOne is less than vectorTwo");
+        println("vectorOne is less than vectorTwo");
     }
-  else
+    else
     {
-      println ("vectorOne is not less than vectorTwo");
+        println("vectorOne is not less than vectorTwo");
     }
 }

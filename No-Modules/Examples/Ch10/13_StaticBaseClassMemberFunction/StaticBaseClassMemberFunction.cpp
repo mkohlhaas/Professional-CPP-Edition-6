@@ -4,36 +4,33 @@ using namespace std;
 
 class BaseStatic
 {
-public:
-  static void
-  beStatic ()
-  {
-    println ("BaseStatic being static.");
-  }
+  public:
+    static void beStatic()
+    {
+        println("BaseStatic being static.");
+    }
 };
 
 class DerivedStatic : public BaseStatic
 {
-public:
-  static void
-  beStatic ()
-  {
-    println ("DerivedStatic keepin' it static.");
-  }
+  public:
+    static void beStatic()
+    {
+        println("DerivedStatic keepin' it static.");
+    }
 };
 
-int
-main ()
+int main()
 {
-  {
-    BaseStatic::beStatic ();
-    DerivedStatic::beStatic ();
-  }
+    {
+        BaseStatic::beStatic();
+        DerivedStatic::beStatic();
+    }
 
-  {
-    DerivedStatic myDerivedStatic;
-    BaseStatic   &ref{ myDerivedStatic };
-    myDerivedStatic.beStatic ();
-    ref.beStatic ();
-  }
+    {
+        DerivedStatic myDerivedStatic;
+        BaseStatic   &ref{myDerivedStatic};
+        myDerivedStatic.beStatic();
+        ref.beStatic();
+    }
 }

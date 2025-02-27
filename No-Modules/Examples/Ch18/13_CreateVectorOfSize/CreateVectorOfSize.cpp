@@ -3,20 +3,18 @@
 
 using namespace std;
 
-vector<int>
-createVectorOfSize (size_t size)
+vector<int> createVectorOfSize(size_t size)
 {
-  vector<int> vec (size);
-  for (int contents{ 0 }; auto &i : vec)
+    vector<int> vec(size);
+    for (int contents{0}; auto &i : vec)
     {
-      i = contents++;
+        i = contents++;
     }
-  return vec;
+    return vec;
 }
 
-int
-main ()
+int main()
 {
-  vector<int> myVector;
-  myVector = createVectorOfSize (123);
+    vector<int> myVector;
+    myVector = createVectorOfSize(123);
 }

@@ -3,9 +3,8 @@ import std;
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  Person person{ "Kole", "Webb" };
-  println ("{}, {}", person.getLastName (), person.getFirstName ());
+    Person person{"Kole", "Webb"};
+    println("{}, {}", person.getLastName(), person.getFirstName());
 }

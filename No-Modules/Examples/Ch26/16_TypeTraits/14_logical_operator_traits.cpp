@@ -3,13 +3,12 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  print ("{} ", conjunction_v<is_integral<int>, is_integral<short> >);
-  print ("{} ", conjunction_v<is_integral<int>, is_integral<double> >);
+    print("{} ", conjunction_v<is_integral<int>, is_integral<short>>);
+    print("{} ", conjunction_v<is_integral<int>, is_integral<double>>);
 
-  print ("{} ", disjunction_v<is_integral<int>, is_integral<double>, is_integral<short> >);
+    print("{} ", disjunction_v<is_integral<int>, is_integral<double>, is_integral<short>>);
 
-  print ("{} ", negation_v<is_integral<int> >);
+    print("{} ", negation_v<is_integral<int>>);
 }

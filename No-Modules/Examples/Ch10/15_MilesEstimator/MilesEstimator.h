@@ -2,29 +2,29 @@
 
 class MilesEstimator
 {
-public:
-	virtual ~MilesEstimator() = default;
+  public:
+    virtual ~MilesEstimator() = default;
 
-	int getMilesLeft() const
-	{
-		return getMilesPerGallon() * getGallonsLeft();
-	}
+    int getMilesLeft() const
+    {
+        return getMilesPerGallon() * getGallonsLeft();
+    }
 
-	virtual void setGallonsLeft(int gallons)
-	{
-		m_gallonsLeft = gallons;
-	}
+    virtual void setGallonsLeft(int gallons)
+    {
+        m_gallonsLeft = gallons;
+    }
 
-	virtual int getGallonsLeft() const
-	{
-		return m_gallonsLeft;
-	}
+    virtual int getGallonsLeft() const
+    {
+        return m_gallonsLeft;
+    }
 
-private:
-	int m_gallonsLeft{ 0 };
+  private:
+    int m_gallonsLeft{0};
 
-	virtual int getMilesPerGallon() const
-	{
-		return 20;
-	}
+    virtual int getMilesPerGallon() const
+    {
+        return 20;
+    }
 };

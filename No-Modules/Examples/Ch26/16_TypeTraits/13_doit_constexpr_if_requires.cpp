@@ -5,36 +5,32 @@ using namespace std;
 
 class IsDoable
 {
-public:
-  void
-  doit () const
-  {
-    println ("IsDoable::doit()");
-  }
+  public:
+    void doit() const
+    {
+        println("IsDoable::doit()");
+    }
 };
 
 class Derived : public IsDoable
 {
 };
 
-template <typename T>
-void
-callDoit (const T &t)
+template <typename T> void callDoit(const T &t)
 {
-  if constexpr (requires { t.doit (); })
+    if constexpr (requires { t.doit(); })
     {
-      t.doit ();
+        t.doit();
     }
-  else
+    else
     {
-      println ("Cannot call doit()!");
+        println("Cannot call doit()!");
     }
 }
 
-int
-main ()
+int main()
 {
-  Derived d;
-  callDoit (d);
-  callDoit (123);
+    Derived d;
+    callDoit(d);
+    callDoit(123);
 }

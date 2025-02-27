@@ -5,26 +5,25 @@
 
 using namespace std;
 
-int
-main ()
+int main()
 {
-  regex r{ "//\\s*(.+)$" };
-  while (true)
+    regex r{"//\\s*(.+)$"};
+    while (true)
     {
-      print ("Enter a string with optional code comments (q=quit):\n> ");
-      string str;
-      if (!getline (cin, str) || str == "q")
+        print("Enter a string with optional code comments (q=quit):\n> ");
+        string str;
+        if (!getline(cin, str) || str == "q")
         {
-          break;
+            break;
         }
 
-      if (smatch m; regex_search (str, m, r))
+        if (smatch m; regex_search(str, m, r))
         {
-          println ("  Found comment '{}'", m[1].str ());
+            println("  Found comment '{}'", m[1].str());
         }
-      else
+        else
         {
-          println ("  No comment found!");
+            println("  No comment found!");
         }
     }
 }

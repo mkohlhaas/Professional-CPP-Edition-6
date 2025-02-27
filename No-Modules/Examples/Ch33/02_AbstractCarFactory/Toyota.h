@@ -9,12 +9,18 @@ class Toyota : public ICar
 
 class ToyotaSedan : public Toyota
 {
-public:
-	std::string info() const override { return "Toyota Sedan"; }
+  public:
+    std::string info() const override
+    {
+        return "Toyota Sedan";
+    }
 };
 
 class ToyotaSuv : public Toyota
 {
-public:
-	std::string info() const override { return "Toyota SUV"; }
+  public:
+    std::string info() const override
+    {
+        return "Toyota SUV";
+    }
 };

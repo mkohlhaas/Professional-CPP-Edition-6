@@ -4,34 +4,32 @@
 
 using namespace std;
 
-void
-process (const Pointer<SpreadsheetCell> &p)
+void process(const Pointer<SpreadsheetCell> &p)
 {
-  if (p != nullptr)
+    if (p != nullptr)
     {
-      println ("not nullptr");
+        println("not nullptr");
     }
-  if (p != 0)
+    if (p != 0)
     {
-      println ("not 0");
+        println("not 0");
     }
-  if (p)
+    if (p)
     {
-      println ("not nullptr");
+        println("not nullptr");
     }
-  if (!p)
+    if (!p)
     {
-      println ("nullptr");
+        println("nullptr");
     }
 }
 
-int
-main ()
+int main()
 {
-  Pointer<SpreadsheetCell> smartCell{ nullptr };
-  process (smartCell);
-  println ("");
+    Pointer<SpreadsheetCell> smartCell{nullptr};
+    process(smartCell);
+    println("");
 
-  Pointer<SpreadsheetCell> anotherSmartCell{ new SpreadsheetCell{ 5.0 } };
-  process (anotherSmartCell);
+    Pointer<SpreadsheetCell> anotherSmartCell{new SpreadsheetCell{5.0}};
+    process(anotherSmartCell);
 }

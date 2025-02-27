@@ -4,27 +4,24 @@ using namespace std;
 
 class Secret
 {
-protected:
-  virtual void
-  dontTell ()
-  {
-    println ("I'll never tell.");
-  }
+  protected:
+    virtual void dontTell()
+    {
+        println("I'll never tell.");
+    }
 };
 
 class Blabber : public Secret
 {
-public:
-  virtual void
-  tell ()
-  {
-    dontTell ();
-  }
+  public:
+    virtual void tell()
+    {
+        dontTell();
+    }
 };
 
-int
-main ()
+int main()
 {
-  Blabber myBlabber;
-  myBlabber.tell (); // Outputs "I'll never tell."
+    Blabber myBlabber;
+    myBlabber.tell(); // Outputs "I'll never tell."
 }

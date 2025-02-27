@@ -6,40 +6,37 @@ using namespace std;
 // shared from a library, ...)
 class Foo
 {
-public:
-  virtual ~Foo ()              = default; // Always a virtual destructor!
-  Foo (const Foo &)            = default;
-  Foo &operator= (const Foo &) = default;
-  Foo (Foo &&)                 = default;
-  Foo &operator= (Foo &&)      = default;
+  public:
+    virtual ~Foo()              = default; // Always a virtual destructor!
+    Foo(const Foo &)            = default;
+    Foo &operator=(const Foo &) = default;
+    Foo(Foo &&)                 = default;
+    Foo &operator=(Foo &&)      = default;
 
-  static unique_ptr<Foo> create (); // Factory function.
-  // Public functionality...
-  virtual void bar () = 0;
+    static unique_ptr<Foo> create(); // Factory function.
+    // Public functionality...
+    virtual void bar() = 0;
 
-protected:
-  Foo () = default; // Protected default constructor.
+  protected:
+    Foo() = default; // Protected default constructor.
 };
 
 // Implementation
 class FooImpl : public Foo
 {
-public:
-  void
-  bar () override
-  { /* ... */
-  }
+  public:
+    void bar() override
+    { /* ... */
+    }
 };
 
-unique_ptr<Foo>
-Foo::create ()
+unique_ptr<Foo> Foo::create()
 {
-  return make_unique<FooImpl> ();
+    return make_unique<FooImpl>();
 }
 
-int
-main ()
+int main()
 {
-  auto fooInstance{ Foo::create () };
-  fooInstance->bar ();
+    auto fooInstance{Foo::create()};
+    fooInstance->bar();
 }

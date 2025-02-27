@@ -3,10 +3,9 @@
 
 using std::println, std::cin;
 
-int
-main ()
+int main()
 {
-  int value;
-  cin >> value;
-  println ("You entered {}.", value);
+    int value;
+    cin >> value;
+    println("You entered {}.", value);
 }

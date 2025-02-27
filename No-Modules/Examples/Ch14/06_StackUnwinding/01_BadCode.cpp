@@ -6,37 +6,34 @@
 
 using namespace std;
 
-void funcOne ();
-void funcTwo ();
+void funcOne();
+void funcTwo();
 
-int
-main ()
+int main()
 {
-  try
+    try
     {
-      funcOne ();
+        funcOne();
     }
-  catch (const exception & /* e */)
+    catch (const exception & /* e */)
     {
-      println (cerr, "Exception caught!");
-      return 1;
+        println(cerr, "Exception caught!");
+        return 1;
     }
 }
 
-void
-funcOne ()
+void funcOne()
 {
-  string  str1;
-  string *str2{ new string{} };
-  funcTwo ();
-  delete str2;
+    string  str1;
+    string *str2{new string{}};
+    funcTwo();
+    delete str2;
 }
 
-void
-funcTwo ()
+void funcTwo()
 {
-  ifstream fileStream;
-  fileStream.open ("filename");
-  throw exception{};
-  fileStream.close ();
+    ifstream fileStream;
+    fileStream.open("filename");
+    throw exception{};
+    fileStream.close();
 }

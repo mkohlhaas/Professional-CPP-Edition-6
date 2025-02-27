@@ -2,16 +2,16 @@
 
 using namespace std;
 
-template <typename T> concept Incrementable = requires (T x)
-{
-  x++;
-  ++x;
+template <typename T>
+concept Incrementable = requires(T x) {
+    x++;
+    ++x;
 };
 
-template <typename T> concept Decrementable = requires (T x)
-{
-  x--;
-  --x;
+template <typename T>
+concept Decrementable = requires(T x) {
+    x--;
+    --x;
 };
 
 // template <typename T> requires Incrementable<T>
@@ -50,13 +50,11 @@ template <typename T> concept Decrementable = requires (T x)
 // void process(const T& t)
 //{}
 
-void
-process (const Incrementable auto &t)
+void process(const Incrementable auto &t)
 {
 }
 
-int
-main ()
+int main()
 {
-  process (123);
+    process(123);
 }
