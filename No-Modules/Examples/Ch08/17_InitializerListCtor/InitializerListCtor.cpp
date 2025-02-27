@@ -12,8 +12,7 @@ public:
   {
     if (values.size () % 2 != 0)
       {
-        throw invalid_argument{ "initializer_list should "
-                                "contain even number of elements." };
+        throw invalid_argument{ "initializer_list should contain even number of elements." };
       }
 
     m_sequence.reserve (values.size ());
@@ -33,7 +32,7 @@ public:
       {
         std::print ("{}, ", value);
       }
-    println ("");
+    println ();
   }
 
 private:

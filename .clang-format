@@ -1,4 +1,4 @@
-BasedOnStyle:                 GNU
+BasedOnStyle:                 Microsoft
 Language:                     Cpp
 ColumnLimit:                  120
 AlignConsecutiveAssignments:  Consecutive

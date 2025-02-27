@@ -1,15 +1,15 @@
-#include "SpreadsheetCell.h"
 #include <print>
 #include <string_view>
 
+#include "SpreadsheetCell.h"
+
 using namespace std;
 
-int
-main ()
+int main()
 {
-  SpreadsheetCell myCell{ 4 };
-  myCell = 5;
-  myCell = "6" sv; // A string_view literal (see Chapter 2).
+    SpreadsheetCell myCell{4};
+    myCell = 5;
+    myCell = "6"sv;
 
-  println ("Cell: {}", myCell.getValue ());
+    println("Cell: {}", myCell.getValue());
 }

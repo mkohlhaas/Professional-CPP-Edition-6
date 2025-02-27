@@ -23,7 +23,7 @@ private:
   double m_value{ 0 };
 };
 
-MyClass::MyClass (double value) : m_value{ value }, m_foo{ m_value } { println ("MyClass::m_value = {}", m_value); }
+MyClass::MyClass (double value) : m_foo{ m_value }, m_value{ value } { println ("MyClass::m_value = {}", m_value); }
 
 int
 main ()

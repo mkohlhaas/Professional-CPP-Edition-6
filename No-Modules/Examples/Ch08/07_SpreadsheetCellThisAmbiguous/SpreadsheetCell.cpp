@@ -7,6 +7,7 @@ void
 SpreadsheetCell::setValue (double value)
 {
   value = value; // Confusing!
+  // this->value = value; // solution
 }
 
 double
