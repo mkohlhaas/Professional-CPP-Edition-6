@@ -19,6 +19,7 @@ Spreadsheet::Spreadsheet(size_t width, size_t height) : m_width{width}, m_height
 
 Spreadsheet::~Spreadsheet()
 {
+    println("Destructor");
     for (size_t i{0}; i < m_width; ++i)
     {
         delete[] m_cells[i];

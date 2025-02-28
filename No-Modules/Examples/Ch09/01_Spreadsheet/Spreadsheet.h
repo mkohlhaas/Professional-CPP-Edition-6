@@ -3,26 +3,28 @@
 #include "SpreadsheetCell.h"
 #include <cstddef>
 
+using std::size_t;
+
 class Spreadsheet
 {
   public:
-    Spreadsheet(std::size_t width, std::size_t height);
+    Spreadsheet(size_t width, size_t height);
     Spreadsheet(const Spreadsheet &src);
     ~Spreadsheet();
 
     Spreadsheet &operator=(const Spreadsheet &rhs);
 
-    void             setCellAt(std::size_t x, std::size_t y, const SpreadsheetCell &cell);
-    SpreadsheetCell &getCellAt(std::size_t x, std::size_t y);
+    void             setCellAt(size_t x, size_t y, const SpreadsheetCell &cell);
+    SpreadsheetCell &getCellAt(size_t x, size_t y);
 
     void swap(Spreadsheet &other) noexcept;
 
   private:
-    void verifyCoordinate(std::size_t x, std::size_t y) const;
-    // bool inRange(std::size_t value, std::size_t upper) const;
+    void verifyCoordinate(size_t x, size_t y) const;
+    // bool inRange(size_t value, size_t upper) const;
 
-    std::size_t       m_width{0};
-    std::size_t       m_height{0};
+    size_t            m_width{0};
+    size_t            m_height{0};
     SpreadsheetCell **m_cells{nullptr};
 };
 

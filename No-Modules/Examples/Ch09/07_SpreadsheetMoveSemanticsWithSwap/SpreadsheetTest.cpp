@@ -16,13 +16,13 @@ int main()
     {
         println("Iteration {}", i);
         vec.push_back(Spreadsheet{100, 100});
-        println("");
+        println();
     }
 
     Spreadsheet s{2, 3};
     s = createObject();
 
-    println("");
+    println();
 
     Spreadsheet s2{5, 6};
     s2 = s;

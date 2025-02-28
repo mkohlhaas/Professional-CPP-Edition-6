@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void helper(string &&message)
+void helper(string &&message [[maybe_unused]])
 {
 }
 
