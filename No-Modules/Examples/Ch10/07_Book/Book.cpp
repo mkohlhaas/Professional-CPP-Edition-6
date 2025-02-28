@@ -52,8 +52,8 @@ int main()
 {
     Romance novel;
     Book    book;
-    println("{}", novel.getDescription()); // Outputs "Romance Paperback Book"
-    println("{}", book.getDescription());  // Outputs "Book"
-    println("{}", novel.getHeight());      // Outputs "60"
-    println("{}", book.getHeight());       // Outputs "120"
+    println("{}", novel.getDescription()); // "Romance Paperback Book"
+    println("{}", book.getDescription());  // "Book"
+    println("{}", novel.getHeight());      // "60"
+    println("{}", book.getHeight());       // "120"
 }

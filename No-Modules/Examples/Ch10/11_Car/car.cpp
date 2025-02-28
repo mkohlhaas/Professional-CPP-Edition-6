@@ -73,7 +73,7 @@ int main()
     GasolineCar gc;
     gc.getFilledUpPowerSource().printType();
 
-    println("");
+    println();
 
     ElectricalCar ev;
     ev.getFilledUpPowerSource().printType();

@@ -7,6 +7,7 @@ class Base
   public:
     void someFunction()
     {
+        println("{}", __func__);
         println("Base::someFunction()");
     }
 
@@ -14,7 +15,7 @@ class Base
     int m_protectedInt{0};
 
   private:
-    int m_privateInt{0};
+    int m_privateInt [[maybe_unused]]{0};
 };
 
 class Derived : public Base
@@ -22,14 +23,17 @@ class Derived : public Base
   public:
     void someFunction()
     {
+        println("{}", __func__);
         println("Derived::someFunction()");
     }
 
     void someOtherFunction()
     {
+        println("{}", __func__);
         println("I can access base class data member m_protectedInt.");
         println("Its value is {}", m_protectedInt);
-        // println("The value of m_privateInt is {}", m_privateInt); // Error!
+        // Error!
+        // println("The value of m_privateInt is {}", m_privateInt);
     }
 };
 
@@ -42,7 +46,9 @@ int main()
 
     {
         Derived myDerived;
-        Base   &ref{myDerived};
+        myDerived.someFunction();
+
+        Base &ref{myDerived};
         ref.someFunction();
     }
 }
