@@ -11,43 +11,43 @@ using namespace std;
 
 template <typename T> class Grid
 {
+    using optT = optional<T>;
+
   public:
+    static constexpr size_t DefaultWidth{10};
+    static constexpr size_t DefaultHeight{10};
+
     explicit Grid(size_t width = DefaultWidth, size_t height = DefaultHeight);
-    virtual ~Grid() = default;
+    Grid(const Grid &src)            = default; // copy constructor
+    Grid &operator=(const Grid &rhs) = default; // copy assignment operator
+    Grid(Grid &&src)                 = default; // move constructor
+    Grid &operator=(Grid &&rhs)      = default; // move assignment operator
+    virtual ~Grid()                  = default;
 
-    // Explicitly default a copy constructor and copy assignment operator.
-    Grid(const Grid &src)            = default;
-    Grid &operator=(const Grid &rhs) = default;
-
-    // Explicitly default a move constructor and move assignment operator.
-    Grid(Grid &&src)            = default;
-    Grid &operator=(Grid &&rhs) = default;
-
-    optional<T>       &at(size_t x, size_t y);
-    const optional<T> &at(size_t x, size_t y) const;
+    optT       &at(size_t x, size_t y);
+    const optT &at(size_t x, size_t y) const;
 
     size_t getHeight() const
     {
         return m_height;
     }
+
     size_t getWidth() const
     {
         return m_width;
     }
 
-    static constexpr size_t DefaultWidth{10};
-    static constexpr size_t DefaultHeight{10};
-
   private:
-    void verifyCoordinate(size_t x, size_t y) const;
-
-    vector<optional<T>> m_cells;
-    size_t              m_width{0}, m_height{0};
+    void         verifyCoordinate(size_t x, size_t y) const;
+    size_t       m_width{0};
+    size_t       m_height{0};
+    vector<optT> m_cells;
 };
 
-template <typename T> Grid<T>::Grid(size_t width, size_t height) : m_width{width}, m_height{height}
+// constructor
+template <typename T>
+Grid<T>::Grid(size_t width, size_t height) : m_width{width}, m_height{height}, m_cells(m_width * m_height)
 {
-    m_cells.resize(m_width * m_height);
 }
 
 template <typename T> void Grid<T>::verifyCoordinate(size_t x, size_t y) const

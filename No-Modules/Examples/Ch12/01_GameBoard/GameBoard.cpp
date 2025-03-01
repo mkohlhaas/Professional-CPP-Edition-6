@@ -1,21 +1,19 @@
 #include "GameBoard.h"
 #include <format>
+#include <print>
 #include <stdexcept>
 #include <utility>
 
 using namespace std;
 
-GameBoard::GameBoard(size_t width, size_t height) : m_width{width}, m_height{height}
+GameBoard::GameBoard(size_t width, size_t height) : m_width{width}, m_height{height}, m_cells(m_width * m_height)
 {
-    m_cells.resize(m_width * m_height);
+    std::println("Size of vector: {}", m_cells.size());
 }
 
 GameBoard::GameBoard(const GameBoard &src) : GameBoard{src.m_width, src.m_height}
 {
-    // The ctor-initializer of this constructor delegates first to the
-    // non-copy constructor to allocate the proper amount of memory.
-
-    // The next step is to copy the data.
+    // copy the data
     for (size_t i{0}; i < m_cells.size(); ++i)
     {
         if (src.m_cells[i])
@@ -51,19 +49,19 @@ void swap(GameBoard &first, GameBoard &second) noexcept
 
 GameBoard &GameBoard::operator=(const GameBoard &rhs)
 {
-    // Copy-and-swap idiom
-    GameBoard temp{rhs}; // Do all the work in a temporary instance
-    swap(temp);          // Commit the work with only non-throwing operations
+    // copy-and-swap idiom
+    GameBoard temp{rhs};
+    swap(temp);
     return *this;
 }
 
-const unique_ptr<GamePiece> &GameBoard::at(size_t x, size_t y) const
+const pGamePiece &GameBoard::at(size_t x, size_t y) const
 {
     verifyCoordinate(x, y);
     return m_cells[x + y * m_width];
 }
 
-unique_ptr<GamePiece> &GameBoard::at(size_t x, size_t y)
+pGamePiece &GameBoard::at(size_t x, size_t y)
 {
-    return const_cast<unique_ptr<GamePiece> &>(as_const(*this).at(x, y));
+    return const_cast<pGamePiece &>(as_const(*this).at(x, y));
 }

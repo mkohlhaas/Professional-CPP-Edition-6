@@ -10,8 +10,8 @@ template <typename RetType = long long, typename T1, typename T2> RetType addB(c
 
 int main()
 {
-    auto result1{addA<long long, int, int>(1, 2)};
-    auto result2{addA<long long>(1, 2)};
+    auto result1 [[maybe_unused]]{addA<long long, int, int>(1, 2)};
+    auto result2 [[maybe_unused]]{addA<long long>(1, 2)};
 
-    auto result{addB(1, 2)};
+    auto result [[maybe_unused]]{addB(1, 2)};
 }

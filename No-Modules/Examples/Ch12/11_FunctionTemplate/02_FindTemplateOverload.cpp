@@ -1,4 +1,3 @@
-#include "SpreadsheetCell.h"
 #include <cstddef>
 #include <cstring>
 #include <optional>

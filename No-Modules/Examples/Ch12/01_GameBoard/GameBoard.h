@@ -4,47 +4,51 @@
 #include <memory>
 #include <vector>
 
+using namespace std;
+
+class GamePiece;
+using pGamePiece = unique_ptr<GamePiece>;
+
 class GamePiece
 {
   public:
-    virtual ~GamePiece()                             = default;
-    virtual std::unique_ptr<GamePiece> clone() const = 0;
+    virtual ~GamePiece()             = default;
+    virtual pGamePiece clone() const = 0;
 };
 
 class GameBoard
 {
   public:
-    explicit GameBoard(std::size_t width = DefaultWidth, std::size_t height = DefaultHeight);
-    GameBoard(const GameBoard &src);            // copy constructor
-    virtual ~GameBoard() = default;             // virtual defaulted destructor
-    GameBoard &operator=(const GameBoard &rhs); // assignment operator
+    static constexpr size_t DefaultWidth{10};
+    static constexpr size_t DefaultHeight{10};
 
-    // Explicitly default a move constructor and move assignment operator.
-    GameBoard(GameBoard &&src)            = default;
-    GameBoard &operator=(GameBoard &&src) = default;
+    explicit GameBoard(size_t width = DefaultWidth, size_t height = DefaultHeight);
+    GameBoard(const GameBoard &src);                 // copy constructor
+    virtual ~GameBoard() = default;                  // virtual defaulted destructor
+    GameBoard &operator=(const GameBoard &rhs);      // assignment operator
+    GameBoard(GameBoard &&src)            = default; // Explicitly default a move constructor...
+    GameBoard &operator=(GameBoard &&src) = default; // ...and move assignment operator.
 
-    std::unique_ptr<GamePiece>       &at(std::size_t x, std::size_t y);
-    const std::unique_ptr<GamePiece> &at(std::size_t x, std::size_t y) const;
+    pGamePiece       &at(size_t x, size_t y);
+    const pGamePiece &at(size_t x, size_t y) const;
 
-    std::size_t getHeight() const
+    size_t getHeight() const
     {
         return m_height;
     }
-    std::size_t getWidth() const
+
+    size_t getWidth() const
     {
         return m_width;
     }
 
-    static constexpr std::size_t DefaultWidth{10};
-    static constexpr std::size_t DefaultHeight{10};
-
     void swap(GameBoard &other) noexcept;
 
   private:
-    void verifyCoordinate(std::size_t x, std::size_t y) const;
-
-    std::vector<std::unique_ptr<GamePiece>> m_cells;
-    std::size_t                             m_width{0}, m_height{0};
+    void               verifyCoordinate(size_t x, size_t y) const;
+    size_t             m_width{0};
+    size_t             m_height{0};
+    vector<pGamePiece> m_cells;
 };
 
 void swap(GameBoard &first, GameBoard &second) noexcept;

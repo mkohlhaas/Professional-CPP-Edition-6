@@ -1,21 +1,22 @@
 #pragma once
 
-#include <compare>
 #include <string>
 #include <string_view>
+
+using namespace std;
 
 class SpreadsheetCell
 {
   public:
     SpreadsheetCell() = default;
     SpreadsheetCell(double initialValue);
-    SpreadsheetCell(std::string_view initialValue);
+    SpreadsheetCell(string_view initialValue);
 
     void set(double value);
-    void set(std::string_view value);
+    void set(string_view value);
 
-    double      getValue() const;
-    std::string getString() const;
+    double getValue() const;
+    string getString() const;
 
     SpreadsheetCell &operator+=(const SpreadsheetCell &rhs);
     SpreadsheetCell &operator-=(const SpreadsheetCell &rhs);
@@ -25,10 +26,9 @@ class SpreadsheetCell
     [[nodiscard]] auto operator<=>(const SpreadsheetCell &) const = default;
 
   private:
-    static std::string doubleToString(double value);
-    static double      stringToDouble(std::string_view value);
-
-    double m_value{0};
+    static string doubleToString(double value);
+    static double stringToDouble(string_view value);
+    double        m_value{0};
 };
 
 SpreadsheetCell operator+(const SpreadsheetCell &lhs, const SpreadsheetCell &rhs);

@@ -7,10 +7,12 @@
 #include <utility>
 #include <vector>
 
+using namespace std;
+
 template <typename T> class Grid
 {
   public:
-    explicit Grid(std::size_t width = DefaultWidth, std::size_t height = DefaultHeight);
+    explicit Grid(size_t width = DefaultWidth, size_t height = DefaultHeight);
     virtual ~Grid() = default;
 
     // Explicitly default a copy constructor and copy assignment operator.
@@ -27,62 +29,64 @@ template <typename T> class Grid
 
     void swap(Grid &other) noexcept;
 
-    // std::optional<T>& at(std::size_t x, std::size_t y);
-    // const std::optional<T>& at(std::size_t x, std::size_t y) const;
-    template <typename Self> auto &&at(this Self &&self, std::size_t x, std::size_t y);
+    // optional<T>& at(size_t x, size_t y);
+    // const optional<T>& at(size_t x, size_t y) const;
+    template <typename Self> auto &&at(this Self &&self, size_t x, size_t y);
 
-    std::size_t getHeight() const
+    size_t getHeight() const
     {
         return m_height;
     }
-    std::size_t getWidth() const
+    size_t getWidth() const
     {
         return m_width;
     }
 
-    static constexpr std::size_t DefaultWidth{10};
-    static constexpr std::size_t DefaultHeight{10};
+    static constexpr size_t DefaultWidth{10};
+    static constexpr size_t DefaultHeight{10};
 
   private:
-    void verifyCoordinate(std::size_t x, std::size_t y) const;
+    void verifyCoordinate(size_t x, size_t y) const;
 
-    std::vector<std::optional<T>> m_cells;
-    std::size_t                   m_width{0}, m_height{0};
+    vector<optional<T>> m_cells;
+    size_t              m_width{0}, m_height{0};
 };
 
-template <typename T> Grid<T>::Grid(std::size_t width, std::size_t height) : m_width{width}, m_height{height}
+template <typename T> Grid<T>::Grid(size_t width, size_t height) : m_width{width}, m_height{height}
 {
     m_cells.resize(m_width * m_height);
 }
 
-template <typename T> void Grid<T>::verifyCoordinate(std::size_t x, std::size_t y) const
+template <typename T> void Grid<T>::verifyCoordinate(size_t x, size_t y) const
 {
     if (x >= m_width)
     {
-        throw std::out_of_range{std::format("x ({}) must be less than width ({}).", x, m_width)};
+        throw out_of_range{format("x ({}) must be less than width ({}).", x, m_width)};
     }
     if (y >= m_height)
     {
-        throw std::out_of_range{std::format("y ({}) must be less than height ({}).", y, m_height)};
+        throw out_of_range{format("y ({}) must be less than height ({}).", y, m_height)};
     }
 }
 
 // template <typename T>
-// const std::optional<T>& Grid<T>::at(std::size_t x, std::size_t y) const
+// const optional<T>& Grid<T>::at(size_t x, size_t y) const
 //{
 //	verifyCoordinate(x, y);
 //	return m_cells[x + y * m_width];
 // }
 //
 // template <typename T>
-// std::optional<T>& Grid<T>::at(std::size_t x, std::size_t y)
+// optional<T>& Grid<T>::at(size_t x, size_t y)
 //{
-//	return const_cast<std::optional<T>&>(std::as_const(*this).at(x, y));
+//	return const_cast<optional<T>&>(as_const(*this).at(x, y));
 // }
-template <typename T> template <typename Self> auto &&Grid<T>::at(this Self &&self, std::size_t x, std::size_t y)
+
+// deducing 'this'
+template <typename T> template <typename Self> auto &&Grid<T>::at(this Self &&self, size_t x, size_t y)
 {
     self.verifyCoordinate(x, y);
-    return std::forward_like<Self>(self.m_cells[x + y * self.m_width]);
+    return forward_like<Self>(self.m_cells[x + y * self.m_width]);
 }
 
 template <typename T> template <typename E> Grid<T>::Grid(const Grid<E> &src) : Grid{src.getWidth(), src.getHeight()}
@@ -91,9 +95,9 @@ template <typename T> template <typename E> Grid<T>::Grid(const Grid<E> &src) : 
     // non-copy constructor to allocate the proper amount of memory.
 
     // The next step is to copy the data.
-    for (std::size_t i{0}; i < m_width; ++i)
+    for (size_t i{0}; i < m_width; ++i)
     {
-        for (std::size_t j{0}; j < m_height; ++j)
+        for (size_t j{0}; j < m_height; ++j)
         {
             at(i, j) = src.at(i, j);
         }
@@ -102,9 +106,9 @@ template <typename T> template <typename E> Grid<T>::Grid(const Grid<E> &src) : 
 
 template <typename T> void Grid<T>::swap(Grid &other) noexcept
 {
-    std::swap(m_width, other.m_width);
-    std::swap(m_height, other.m_height);
-    std::swap(m_cells, other.m_cells);
+    swap(m_width, other.m_width);
+    swap(m_height, other.m_height);
+    swap(m_cells, other.m_cells);
 }
 
 template <typename T> template <typename E> Grid<T> &Grid<T>::operator=(const Grid<E> &rhs)

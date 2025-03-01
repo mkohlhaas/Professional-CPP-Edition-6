@@ -6,7 +6,7 @@ using namespace std;
 template <typename T> class SpreadsheetCell
 {
   public:
-    explicit SpreadsheetCell(T t) : m_content{move(t)}
+    explicit SpreadsheetCell(T t) : m_content{std::move(t)}
     {
     }
     const T &getContent() const
@@ -18,12 +18,15 @@ template <typename T> class SpreadsheetCell
     T m_content;
 };
 
-SpreadsheetCell(const char *) -> SpreadsheetCell<std::string>;
+// User-defined Deduction Guide
+explicit SpreadsheetCell(const char *) -> SpreadsheetCell<string>;
+// or:
+// SpreadsheetCell(const char *) -> SpreadsheetCell<string>;
 
 int main()
 {
+    // Class Template Argument Deduction
     string          myString{"Hello World!"};
     SpreadsheetCell cell{myString};
-
     SpreadsheetCell cell2{"test"};
 }
